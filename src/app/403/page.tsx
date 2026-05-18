@@ -4,6 +4,7 @@
  * 403 Forbidden Page - Security Style
  */
 
+import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { ShieldAlert, Lock, ArrowLeft, AlertTriangle } from 'lucide-react';
 import Link from 'next/link';
@@ -15,6 +16,27 @@ export default function ForbiddenPage() {
   const resource = searchParams.get('resource') || 'this resource';
   const permission = searchParams.get('permission') || 'unknown';
   const role = searchParams.get('role') || 'UNKNOWN';
+
+  // Generate random values after mount to avoid hydration errors
+  const [incidentId, setIncidentId] = useState('');
+  const [timestamp, setTimestamp] = useState('');
+  const [displayTimestamp, setDisplayTimestamp] = useState('');
+
+  useEffect(() => {
+    setIncidentId(Math.random().toString(36).substring(7).toUpperCase());
+    const now = new Date();
+    setTimestamp(now.toISOString());
+    setDisplayTimestamp(now.toLocaleString('vi-VN', {
+      timeZone: 'Asia/Ho_Chi_Minh',
+      year: 'numeric',
+      month: '2-digit',
+      day: '2-digit',
+      hour: '2-digit',
+      minute: '2-digit',
+      second: '2-digit',
+      hour12: false,
+    }));
+  }, []);
 
   return (
     <div className="min-h-screen bg-security-bg bg-cyber-grid">
@@ -76,25 +98,27 @@ export default function ForbiddenPage() {
           </motion.div>
 
           {/* Security Explanation */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.4 }}
-            className="mb-8"
-          >
-            <SecurityExplanationCard
-              type="denied"
-              title="Truy Cập Bị Từ Chối"
-              message="Yêu cầu của bạn đã được kiểm tra qua middleware, JWT verification và permission validation. Hệ thống phát hiện bạn không có quyền cần thiết để truy cập tài nguyên này."
-              details={{
-                currentRole: role,
-                requiredPermission: permission,
-                resource: resource,
-                timestamp: new Date().toLocaleString('vi-VN'),
-              }}
-              asvsCompliance="OWASP ASVS Level 2 yêu cầu mọi authorization phải được kiểm tra server-side. Hệ thống đã từ chối truy cập và ghi log sự kiện này."
-            />
-          </motion.div>
+          {displayTimestamp && (
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.4 }}
+              className="mb-8"
+            >
+              <SecurityExplanationCard
+                type="denied"
+                title="Truy Cập Bị Từ Chối"
+                message="Yêu cầu của bạn đã được kiểm tra qua middleware, JWT verification và permission validation. Hệ thống phát hiện bạn không có quyền cần thiết để truy cập tài nguyên này."
+                details={{
+                  currentRole: role,
+                  requiredPermission: permission,
+                  resource: resource,
+                  timestamp: displayTimestamp,
+                }}
+                asvsCompliance="OWASP ASVS Level 2 yêu cầu mọi authorization phải được kiểm tra server-side. Hệ thống đã từ chối truy cập và ghi log sự kiện này."
+              />
+            </motion.div>
+          )}
 
           {/* Warning Box */}
           <motion.div
@@ -135,15 +159,17 @@ export default function ForbiddenPage() {
           </motion.div>
 
           {/* Additional Info */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.7 }}
-            className="mt-8 text-center text-xs text-gray-500"
-          >
-            <p>Security Incident ID: {Math.random().toString(36).substring(7).toUpperCase()}</p>
-            <p className="mt-1">Timestamp: {new Date().toISOString()}</p>
-          </motion.div>
+          {incidentId && timestamp && (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.7 }}
+              className="mt-8 text-center text-xs text-gray-500"
+            >
+              <p>Security Incident ID: {incidentId}</p>
+              <p className="mt-1">Timestamp: {timestamp}</p>
+            </motion.div>
+          )}
         </div>
       </div>
     </div>

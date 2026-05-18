@@ -10,6 +10,8 @@ import { comparePassword } from '@/lib/password';
 import { signToken } from '@/lib/jwt';
 import { formatErrorResponse, ValidationError, UnauthorizedError } from '@/lib/errors';
 import { logLogin } from '@/lib/audit';
+import { getDashboardPath } from '@/lib/dashboard-routes';
+import { Role } from '@/types/auth';
 
 const loginSchema = z.object({
   email: z.string().email('Invalid email format'),
@@ -78,16 +80,9 @@ export async function POST(request: NextRequest) {
     console.log('[LOGIN API] User roles:', roles);
     console.log('[LOGIN API] User permissions count:', permissions.length);
 
-    // Xác định redirect URL dựa trên role
-    let redirectTo = '/account';
-    const primaryRole = roles[0];
-    if (primaryRole === 'ADMIN') {
-      redirectTo = '/admin/dashboard';
-    } else if (primaryRole === 'STAFF') {
-      redirectTo = '/staff/dashboard';
-    } else if (primaryRole === 'CUSTOMER') {
-      redirectTo = '/account';
-    }
+    // Xác định redirect URL dựa trên role using helper
+    const primaryRole = roles[0] as Role;
+    const redirectTo = getDashboardPath(primaryRole);
 
     console.log('[LOGIN API] Redirect to:', redirectTo);
 

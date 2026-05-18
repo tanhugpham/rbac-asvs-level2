@@ -21,7 +21,7 @@ const FAKE_USERS: FakeUser[] = [
   // ADMIN
   {
     name: 'Nguyễn Minh Quân',
-    email: 'admin@example.com',
+    email: 'admin@gmail.com',
     role: 'ADMIN',
     password: 'Admin@123456',
   },
@@ -29,19 +29,19 @@ const FAKE_USERS: FakeUser[] = [
   // STAFF
   {
     name: 'Trần Quốc Bảo',
-    email: 'staff@example.com',
+    email: 'staff@hotmail.com',
     role: 'STAFF',
     password: 'Staff@123456',
   },
   {
     name: 'Lê Thị Mai Anh',
-    email: 'maianh.staff@example.com',
+    email: 'maianh.staff@gmail.com',
     role: 'STAFF',
     password: 'Staff@123456',
   },
   {
     name: 'Phạm Hoàng Nam',
-    email: 'hoangnam.staff@example.com',
+    email: 'hoangnam.staff@hotmail.com',
     role: 'STAFF',
     password: 'Staff@123456',
   },
@@ -49,61 +49,61 @@ const FAKE_USERS: FakeUser[] = [
   // CUSTOMER
   {
     name: 'Nguyễn Văn An',
-    email: 'an.customer@example.com',
+    email: 'an.customer@gmail.com',
     role: 'CUSTOMER',
     password: 'Customer@123456',
   },
   {
     name: 'Trần Thị Bích Ngọc',
-    email: 'bichngoc.customer@example.com',
+    email: 'bichngoc.customer@hotmail.com',
     role: 'CUSTOMER',
     password: 'Customer@123456',
   },
   {
     name: 'Lê Minh Khang',
-    email: 'khang.customer@example.com',
+    email: 'khang.customer@gmail.com',
     role: 'CUSTOMER',
     password: 'Customer@123456',
   },
   {
     name: 'Phạm Gia Huy',
-    email: 'giahuy.customer@example.com',
+    email: 'giahuy.customer@hotmail.com',
     role: 'CUSTOMER',
     password: 'Customer@123456',
   },
   {
     name: 'Hoàng Thanh Tâm',
-    email: 'thanhtam.customer@example.com',
+    email: 'thanhtam.customer@gmail.com',
     role: 'CUSTOMER',
     password: 'Customer@123456',
   },
   {
     name: 'Đỗ Hải Đăng',
-    email: 'haidang.customer@example.com',
+    email: 'haidang.customer@hotmail.com',
     role: 'CUSTOMER',
     password: 'Customer@123456',
   },
   {
     name: 'Vũ Phương Linh',
-    email: 'phuonglinh.customer@example.com',
+    email: 'phuonglinh.customer@gmail.com',
     role: 'CUSTOMER',
     password: 'Customer@123456',
   },
   {
     name: 'Bùi Nhật Minh',
-    email: 'nhatminh.customer@example.com',
+    email: 'nhatminh.customer@hotmail.com',
     role: 'CUSTOMER',
     password: 'Customer@123456',
   },
   {
     name: 'Đặng Khánh Vy',
-    email: 'khanhvy.customer@example.com',
+    email: 'khanhvy.customer@gmail.com',
     role: 'CUSTOMER',
     password: 'Customer@123456',
   },
   {
     name: 'Nguyễn Tuấn Kiệt',
-    email: 'tuankiet.customer@example.com',
+    email: 'tuankiet.customer@hotmail.com',
     role: 'CUSTOMER',
     password: 'Customer@123456',
   },
@@ -345,9 +345,13 @@ async function main() {
   console.log('💡 LƯU Ý:');
   console.log('   - Tất cả mật khẩu đã được hash bằng bcryptjs');
   console.log('   - Dữ liệu này chỉ dùng cho demo, không dùng trong production');
-  console.log('   - Email sử dụng domain giả @example.com');
+  console.log('   - Email sử dụng domain giả @gmail.com và @hotmail.com');
   console.log('='.repeat(80));
   console.log('\n✅ Bạn có thể đăng nhập với bất kỳ tài khoản nào ở trên!');
+  console.log('\n🔑 QUICK LOGIN:');
+  console.log('   Admin:    admin@gmail.com / Admin@123456');
+  console.log('   Staff:    staff@hotmail.com / Staff@123456');
+  console.log('   Customer: an.customer@gmail.com / Customer@123456');
 }
 
 function getPermissionDescription(permission: string): string {

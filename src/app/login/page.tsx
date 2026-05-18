@@ -11,21 +11,21 @@ import { Card, CardContent } from '@/components/ui/Card';
 const DEMO_ACCOUNTS = [
   {
     role: 'ADMIN',
-    email: 'admin@example.com',
+    email: 'admin@gmail.com',
     password: 'Admin@123456',
     color: 'from-blue-500 to-blue-600',
     icon: Shield,
   },
   {
     role: 'STAFF',
-    email: 'staff@example.com',
+    email: 'staff@hotmail.com',
     password: 'Staff@123456',
     color: 'from-purple-500 to-purple-600',
     icon: User,
   },
   {
     role: 'CUSTOMER',
-    email: 'an.customer@example.com',
+    email: 'an.customer@gmail.com',
     password: 'Customer@123456',
     color: 'from-green-500 to-green-600',
     icon: User,
@@ -207,7 +207,7 @@ export default function LoginPage() {
                       required
                       autoComplete="email"
                       className="w-full rounded-lg border border-white/10 bg-black/30 py-3 pl-11 pr-4 text-white placeholder-gray-500 transition-all focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/50"
-                      placeholder="admin@example.com"
+                      placeholder="admin@gmail.com"
                     />
                   </div>
                 </div>

@@ -21,6 +21,7 @@ import {
 } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/Card';
 import { AttackSimulationTerminal } from '@/components/security/AttackSimulationTerminal';
+import { LogoutButton } from '@/components/LogoutButton';
 import type { AttackSimulationResult, AttackScenario } from '@/types/auth';
 import { SEVERITY_COLORS } from '@/lib/security-constants';
 
@@ -119,16 +120,19 @@ export default function AttackSimulationPage() {
           animate={{ opacity: 1, y: 0 }}
           className="mb-8"
         >
-          <div className="flex items-center gap-4">
-            <div className="flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-br from-red-500 to-orange-500 shadow-lg shadow-red-500/50">
-              <Shield className="h-8 w-8 text-white" />
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-4">
+              <div className="flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-br from-red-500 to-orange-500 shadow-lg shadow-red-500/50">
+                <Shield className="h-8 w-8 text-white" />
+              </div>
+              <div>
+                <h1 className="text-3xl font-bold text-white">Live Attack Simulation</h1>
+                <p className="text-gray-400">
+                  Demonstrate RBAC security enforcement in real-time
+                </p>
+              </div>
             </div>
-            <div>
-              <h1 className="text-3xl font-bold text-white">Live Attack Simulation</h1>
-              <p className="text-gray-400">
-                Demonstrate RBAC security enforcement in real-time
-              </p>
-            </div>
+            <LogoutButton variant="default" />
           </div>
         </motion.div>
 

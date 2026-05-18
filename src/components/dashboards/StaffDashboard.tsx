@@ -5,6 +5,7 @@ import { Package, ShoppingCart, Clock, AlertCircle, Settings, Users } from 'luci
 import Link from 'next/link';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/Card';
 import { formatNumber } from '@/lib/utils';
+import { LogoutButton } from '@/components/LogoutButton';
 
 interface StaffDashboardProps {
   stats: {
@@ -51,8 +52,13 @@ export function StaffDashboard({ stats }: StaffDashboardProps) {
           animate={{ opacity: 1, y: 0 }}
           className="mb-8"
         >
-          <h1 className="mb-2 text-4xl font-bold text-white">Staff Dashboard</h1>
-          <p className="text-gray-400">Product & Order Management</p>
+          <div className="flex items-center justify-between">
+            <div>
+              <h1 className="mb-2 text-4xl font-bold text-white">Staff Dashboard</h1>
+              <p className="text-gray-400">Product & Order Management</p>
+            </div>
+            <LogoutButton variant="default" />
+          </div>
         </motion.div>
         
         {/* Stats Grid */}

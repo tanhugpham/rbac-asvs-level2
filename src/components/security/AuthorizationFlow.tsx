@@ -13,6 +13,7 @@ import {
   ArrowDown,
 } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/Card';
+import { LogoutButton } from '@/components/LogoutButton';
 import { AUTHORIZATION_FLOW_STEPS } from '@/lib/security-constants';
 
 const stepIcons = [
@@ -32,11 +33,14 @@ export function AuthorizationFlow() {
   return (
     <div className="space-y-6">
       {/* Header */}
-      <div>
-        <h2 className="text-2xl font-bold text-white">Authorization Flow</h2>
-        <p className="text-gray-400">
-          Luồng xác thực và phân quyền theo OWASP ASVS Level 2
-        </p>
+      <div className="flex items-center justify-between">
+        <div>
+          <h2 className="text-2xl font-bold text-white">Authorization Flow</h2>
+          <p className="text-gray-400">
+            Luồng xác thực và phân quyền theo OWASP ASVS Level 2
+          </p>
+        </div>
+        <LogoutButton variant="default" />
       </div>
 
       {/* Flow Diagram */}

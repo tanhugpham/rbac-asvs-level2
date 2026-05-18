@@ -5,6 +5,7 @@ import { PERMISSIONS, ROLES, ROLE_PERMISSIONS } from '@/types/auth';
 import { Card, CardContent, CardHeader, CardTitle } from './ui/Card';
 import { Check, X, Shield, ArrowRight, Lock, Key, Database, FileCheck } from 'lucide-react';
 import Link from 'next/link';
+import { getDashboardPath } from '@/lib/dashboard-routes';
 
 export function SecurityVisualization() {
   const permissionsList = Object.values(PERMISSIONS);
@@ -20,7 +21,7 @@ export function SecurityVisualization() {
           className="mb-8"
         >
           <Link 
-            href="/dashboard/admin"
+            href={getDashboardPath(ROLES.ADMIN)}
             className="mb-4 inline-flex items-center text-sm text-gray-400 transition-colors hover:text-white"
           >
             ← Back to Dashboard

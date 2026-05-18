@@ -1,6 +1,7 @@
 import { requirePermission } from '@/lib/auth';
 import { PERMISSIONS } from '@/types/auth';
 import { SecurityAnalyticsDashboard } from '@/components/security/SecurityAnalyticsDashboard';
+import { LogoutButton } from '@/components/LogoutButton';
 import { getSecurityAnalytics } from '@/lib/security-analytics';
 import { redirect } from 'next/navigation';
 
@@ -24,11 +25,14 @@ export default async function SecurityAnalyticsPage() {
     return (
       <div className="min-h-screen bg-security-bg bg-cyber-grid p-6">
         <div className="mx-auto max-w-7xl">
-          <div className="mb-6">
-            <h1 className="text-3xl font-bold text-white">Security Analytics</h1>
-            <p className="text-gray-400">
-              Real-time security metrics and access patterns - Last 7 days
-            </p>
+          <div className="mb-6 flex items-center justify-between">
+            <div>
+              <h1 className="text-3xl font-bold text-white">Security Analytics</h1>
+              <p className="text-gray-400">
+                Real-time security metrics and access patterns - Last 7 days
+              </p>
+            </div>
+            <LogoutButton variant="default" />
           </div>
           <SecurityAnalyticsDashboard analytics={analytics} />
         </div>

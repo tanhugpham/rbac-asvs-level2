@@ -5,6 +5,7 @@ import { Check, X, Info } from 'lucide-react';
 import { PERMISSIONS, ROLE_PERMISSIONS, ROLES, type Permission, type Role } from '@/types/auth';
 import { PERMISSION_DESCRIPTIONS, ROLE_COLORS } from '@/lib/security-constants';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/Card';
+import { LogoutButton } from '@/components/LogoutButton';
 import { useState } from 'react';
 
 export function RBACMatrix() {
@@ -29,6 +30,7 @@ export function RBACMatrix() {
             Ma trận quyền hạn theo vai trò - OWASP ASVS Level 2
           </p>
         </div>
+        <LogoutButton variant="default" />
       </div>
 
       {/* Matrix */}

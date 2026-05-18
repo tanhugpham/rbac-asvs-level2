@@ -5,6 +5,7 @@ import { Users, Shield, Key, AlertTriangle, Activity, Eye, Settings, FileText } 
 import Link from 'next/link';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/Card';
 import { formatNumber, formatDate } from '@/lib/utils';
+import { LogoutButton } from '@/components/LogoutButton';
 
 interface AuditLog {
   id: string;
@@ -73,8 +74,13 @@ export function AdminDashboard({ stats, recentLogs }: AdminDashboardProps) {
           animate={{ opacity: 1, y: 0 }}
           className="mb-8"
         >
-          <h1 className="mb-2 text-4xl font-bold text-white">Admin Dashboard</h1>
-          <p className="text-gray-400">Security Operations Center - OWASP ASVS Level 2</p>
+          <div className="flex items-center justify-between">
+            <div>
+              <h1 className="mb-2 text-4xl font-bold text-white">Admin Dashboard</h1>
+              <p className="text-gray-400">Security Operations Center - OWASP ASVS Level 2</p>
+            </div>
+            <LogoutButton variant="default" />
+          </div>
         </motion.div>
         
         {/* Stats Grid */}

@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import { SessionUser } from '@/types/auth';
 import { WelcomeModal } from '@/components/WelcomeModal';
 import { useRouter } from 'next/navigation';
+import { getDashboardPathFromRoles } from '@/lib/dashboard-routes';
 
 interface AccountPageClientProps {
   user: SessionUser;
@@ -17,15 +18,9 @@ export function AccountPageClient({ user }: AccountPageClientProps) {
     // Auto-close welcome modal after 5 seconds
     const timer = setTimeout(() => {
       setShowWelcome(false);
-      // Redirect to appropriate dashboard
-      const primaryRole = user.roles[0];
-      if (primaryRole === 'ADMIN') {
-        router.push('/admin/dashboard');
-      } else if (primaryRole === 'STAFF') {
-        router.push('/staff/dashboard');
-      } else if (primaryRole === 'CUSTOMER') {
-        router.push('/account');
-      }
+      // Redirect to appropriate dashboard using helper
+      const dashboardPath = getDashboardPathFromRoles(user.roles);
+      router.push(dashboardPath);
     }, 5000);
 
     return () => clearTimeout(timer);
@@ -33,15 +28,9 @@ export function AccountPageClient({ user }: AccountPageClientProps) {
 
   const handleCloseWelcome = () => {
     setShowWelcome(false);
-    // Redirect to appropriate dashboard
-    const primaryRole = user.roles[0];
-    if (primaryRole === 'ADMIN') {
-      router.push('/admin/dashboard');
-    } else if (primaryRole === 'STAFF') {
-      router.push('/staff/dashboard');
-    } else if (primaryRole === 'CUSTOMER') {
-      router.push('/account');
-    }
+    // Redirect to appropriate dashboard using helper
+    const dashboardPath = getDashboardPathFromRoles(user.roles);
+    router.push(dashboardPath);
   };
 
   return (

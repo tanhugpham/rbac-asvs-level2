@@ -13,7 +13,8 @@ export function cn(...inputs: ClassValue[]) {
 }
 
 /**
- * Format date for display
+ * Format date for display (server-safe, no hydration issues)
+ * Uses fixed locale and timezone to prevent hydration mismatch
  */
 export function formatDate(date: Date | string): string {
   const d = typeof date === 'string' ? new Date(date) : date;
@@ -23,6 +24,9 @@ export function formatDate(date: Date | string): string {
     day: '2-digit',
     hour: '2-digit',
     minute: '2-digit',
+    second: '2-digit',
+    timeZone: 'Asia/Ho_Chi_Minh',
+    hour12: false,
   }).format(d);
 }
 

@@ -13,7 +13,7 @@ import { verifyTokenEdge } from './lib/jwt-edge';
 const AUTH_COOKIE_NAME = 'auth-token';
 
 // Routes yêu cầu đăng nhập
-const PROTECTED_ROUTES = ['/admin', '/staff', '/account', '/orders'];
+const PROTECTED_ROUTES = ['/admin', '/staff', '/account', '/orders', '/security'];
 
 // Routes chỉ dành cho guest (đã đăng nhập thì không cho vào)
 const GUEST_ONLY_ROUTES = ['/login', '/register'];

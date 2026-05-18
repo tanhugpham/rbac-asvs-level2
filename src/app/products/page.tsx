@@ -1,62 +1,56 @@
-import { prisma } from '@/lib/prisma';
+import { redirect } from 'next/navigation';
 import { getCurrentUser } from '@/lib/auth';
-import Link from 'next/link';
+import { PERMISSIONS } from '@/types/auth';
+import { prisma } from '@/lib/prisma';
+import { ProductsClient } from './ProductsClient';
 
 export default async function ProductsPage() {
-  const user = await getCurrentUser();
-  const products = await prisma.product.findMany({
-    where: { isActive: true },
-    orderBy: { createdAt: 'desc' },
-  });
+  try {
+    console.log('[PRODUCTS] Loading products page...');
+    
+    const user = await getCurrentUser();
 
-  return (
-    <div className="container" style={{ paddingTop: '60px' }}>
-      {user && (
-        <div style={{ marginBottom: '24px' }}>
-          <Link href="/account" style={{ color: '#0070f3' }}>
-            ← Back to Account
-          </Link>
-        </div>
-      )}
+    if (!user) {
+      redirect('/login');
+    }
 
-      <div className="card">
-        <h1 style={{ fontSize: '24px', marginBottom: '24px' }}>Products</h1>
+    console.log('[PRODUCTS] User:', user.email, 'Permissions:', user.permissions);
 
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))', gap: '20px' }}>
-          {products.map((product) => (
-            <div
-              key={product.id}
-              style={{
-                padding: '20px',
-                background: '#f9f9f9',
-                borderRadius: '8px',
-                border: '1px solid #eee',
-              }}
-            >
-              <h2 style={{ fontSize: '18px', marginBottom: '8px' }}>
-                {product.name}
-              </h2>
-              <p style={{ fontSize: '14px', color: '#666', marginBottom: '12px' }}>
-                {product.description}
-              </p>
-              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                <span style={{ fontSize: '20px', fontWeight: 600, color: '#0070f3' }}>
-                  ${product.price.toFixed(2)}
-                </span>
-                <span style={{ fontSize: '14px', color: '#666' }}>
-                  Stock: {product.stock}
-                </span>
-              </div>
-            </div>
-          ))}
-        </div>
+    // Check if user can manage products (ADMIN/STAFF)
+    const canManageProducts = 
+      user.permissions.includes(PERMISSIONS.PRODUCT_CREATE) ||
+      user.permissions.includes(PERMISSIONS.PRODUCT_UPDATE) ||
+      user.permissions.includes(PERMISSIONS.PRODUCT_DELETE);
 
-        {products.length === 0 && (
-          <p style={{ textAlign: 'center', color: '#666', padding: '40px' }}>
-            No products available
-          </p>
-        )}
-      </div>
-    </div>
-  );
+    // Fetch products with error handling
+    let products: any[] = [];
+
+    try {
+      products = await prisma.product.findMany({
+        where: { isActive: true },
+        orderBy: { createdAt: 'desc' },
+      }).catch(() => []);
+    } catch (error) {
+      console.error('[PRODUCTS] Error fetching products:', error);
+      products = [];
+    }
+
+    console.log('[PRODUCTS] Loaded', products.length, 'products');
+
+    return (
+      <ProductsClient 
+        products={products} 
+        user={user}
+        canManageProducts={canManageProducts}
+      />
+    );
+  } catch (error: any) {
+    console.error('[PRODUCTS] Error:', error);
+
+    if (error.message?.includes('Authentication required')) {
+      redirect('/login');
+    }
+
+    throw error;
+  }
 }
