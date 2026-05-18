@@ -4,14 +4,16 @@
  * 403 Forbidden Page - Security Style
  */
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, Suspense } from 'react';
 import { motion } from 'framer-motion';
 import { ShieldAlert, Lock, ArrowLeft, AlertTriangle } from 'lucide-react';
 import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
 import { SecurityExplanationCard } from '@/components/SecurityExplanationCard';
 
-export default function ForbiddenPage() {
+export const dynamic = 'force-dynamic';
+
+function ForbiddenPageContent() {
   const searchParams = useSearchParams();
   const resource = searchParams.get('resource') || 'this resource';
   const permission = searchParams.get('permission') || 'unknown';
@@ -173,5 +175,13 @@ export default function ForbiddenPage() {
         </div>
       </div>
     </div>
+  );
+}
+
+export default function ForbiddenPage() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <ForbiddenPageContent />
+    </Suspense>
   );
 }

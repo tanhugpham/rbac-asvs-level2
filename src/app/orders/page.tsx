@@ -6,6 +6,8 @@
  */
 
 import { requireAuth } from '@/lib/auth';
+
+export const dynamic = 'force-dynamic';
 import { PERMISSIONS } from '@/types/auth';
 import { prisma } from '@/lib/prisma';
 import Link from 'next/link';
