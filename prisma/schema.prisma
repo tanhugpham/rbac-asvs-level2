@@ -1,0 +1,173 @@
+// Prisma Schema cho RBAC System - OWASP ASVS Level 2
+// Mô hình: User -> UserRole -> Role -> RolePermission -> Permission
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// Bảng User - Người dùng hệ thống
+model User {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  name      String
+  password  String   // Hashed với bcrypt
+  isActive  Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Relations
+  userRoles UserRole[]
+  orders    Order[]
+  auditLogs AuditLog[]
+
+  @@index([email])
+  @@map("users")
+}
+
+// Bảng Role - Vai trò (ADMIN, STAFF, CUSTOMER)
+model Role {
+  id          String   @id @default(cuid())
+  name        String   @unique // ADMIN, STAFF, CUSTOMER
+  description String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  // Relations
+  userRoles       UserRole[]
+  rolePermissions RolePermission[]
+
+  @@index([name])
+  @@map("roles")
+}
+
+// Bảng Permission - Quyền chi tiết (user:read, product:create, etc.)
+model Permission {
+  id          String   @id @default(cuid())
+  name        String   @unique // Format: resource:action (e.g., user:read)
+  description String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  // Relations
+  rolePermissions RolePermission[]
+
+  @@index([name])
+  @@map("permissions")
+}
+
+// Bảng trung gian User-Role (Many-to-Many)
+model UserRole {
+  id        String   @id @default(cuid())
+  userId    String
+  roleId    String
+  createdAt DateTime @default(now())
+
+  // Relations
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  role Role @relation(fields: [roleId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, roleId])
+  @@index([userId])
+  @@index([roleId])
+  @@map("user_roles")
+}
+
+// Bảng trung gian Role-Permission (Many-to-Many)
+model RolePermission {
+  id           String   @id @default(cuid())
+  roleId       String
+  permissionId String
+  createdAt    DateTime @default(now())
+
+  // Relations
+  role       Role       @relation(fields: [roleId], references: [id], onDelete: Cascade)
+  permission Permission @relation(fields: [permissionId], references: [id], onDelete: Cascade)
+
+  @@unique([roleId, permissionId])
+  @@index([roleId])
+  @@index([permissionId])
+  @@map("role_permissions")
+}
+
+// Bảng AuditLog - Ghi log các hành vi bảo mật
+model AuditLog {
+  id          String   @id @default(cuid())
+  userId      String?
+  action      String // Hành động: LOGIN, ACCESS_DENIED, PERMISSION_CHECK, etc.
+  resource    String? // Route/API/Action bị truy cập
+  permission  String? // Permission yêu cầu
+  status      String // SUCCESS, DENIED, ERROR
+  ipAddress   String?
+  userAgent   String?
+  details     String? // JSON string chứa thông tin bổ sung
+  createdAt   DateTime @default(now())
+
+  // Relations
+  user User? @relation(fields: [userId], references: [id], onDelete: SetNull)
+
+  @@index([userId])
+  @@index([action])
+  @@index([status])
+  @@index([createdAt])
+  @@map("audit_logs")
+}
+
+// Bảng Product - Sản phẩm (digital account)
+model Product {
+  id          String   @id @default(cuid())
+  name        String
+  description String?
+  price       Float
+  stock       Int      @default(0)
+  isActive    Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  // Relations
+  orderItems OrderItem[]
+
+  @@index([isActive])
+  @@map("products")
+}
+
+// Bảng Order - Đơn hàng
+model Order {
+  id          String   @id @default(cuid())
+  userId      String
+  totalAmount Float
+  status      String   @default("PENDING") // PENDING, PAID, COMPLETED, CANCELLED
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  // Relations
+  user       User        @relation(fields: [userId], references: [id], onDelete: Cascade)
+  orderItems OrderItem[]
+
+  @@index([userId])
+  @@index([status])
+  @@map("orders")
+}
+
+// Bảng OrderItem - Chi tiết đơn hàng (chứa account secret sau khi mua)
+model OrderItem {
+  id            String   @id @default(cuid())
+  orderId       String
+  productId     String
+  quantity      Int      @default(1)
+  price         Float
+  accountSecret String? // Thông tin tài khoản sau khi mua (yêu cầu account:read_secret)
+  createdAt     DateTime @default(now())
+
+  // Relations
+  order   Order   @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  product Product @relation(fields: [productId], references: [id], onDelete: Restrict)
+
+  @@index([orderId])
+  @@index([productId])
+  @@map("order_items")
+}
