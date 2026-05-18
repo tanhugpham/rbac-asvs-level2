@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import { SessionUser } from '@/types/auth';
 import { WelcomeModal } from '@/components/WelcomeModal';
 import { useRouter } from 'next/navigation';
+import type { Role } from "@/types/auth";
 import { getDashboardPathFromRoles } from '@/lib/dashboard-routes';
 
 interface AccountPageClientProps {
@@ -19,7 +20,7 @@ export function AccountPageClient({ user }: AccountPageClientProps) {
     const timer = setTimeout(() => {
       setShowWelcome(false);
       // Redirect to appropriate dashboard using helper
-      const dashboardPath = getDashboardPathFromRoles(user.roles);
+      const dashboardPath = getDashboardPathFromRoles(user.roles as Role[]);
       router.push(dashboardPath);
     }, 5000);
 
@@ -29,7 +30,7 @@ export function AccountPageClient({ user }: AccountPageClientProps) {
   const handleCloseWelcome = () => {
     setShowWelcome(false);
     // Redirect to appropriate dashboard using helper
-    const dashboardPath = getDashboardPathFromRoles(user.roles as any);
+    const dashboardPath = getDashboardPathFromRoles(user.roles as Role[]);
     router.push(dashboardPath);
   };
 

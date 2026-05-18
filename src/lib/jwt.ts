@@ -6,11 +6,11 @@
 import jwt from 'jsonwebtoken';
 import { JWTPayload } from '@/types/auth';
 
-const JWT_SECRET = process.env.JWT_SECRET;
+const JWT_SECRET = process.env.JWT_SECRET!; // Assert non-null vì đã check bên dưới
 const JWT_EXPIRES_IN = '7d'; // Token hết hạn sau 7 ngày
 
-if (!JWT_SECRET) {
-  throw new Error('JWT_SECRET is not defined in environment variables');
+if (!process.env.JWT_SECRET) {
+  throw new Error('JWT_SECRET is not defined');
 }
 
 /**
@@ -31,7 +31,7 @@ export function verifyToken(token: string): JWTPayload | null {
   try {
     const decoded = jwt.verify(token, JWT_SECRET, {
       algorithms: ['HS256'],
-    }) as JWTPayload;
+    }) as unknown as JWTPayload;
     return decoded;
   } catch (error) {
     // Token không hợp lệ hoặc hết hạn
