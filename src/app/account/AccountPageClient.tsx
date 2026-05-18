@@ -29,7 +29,7 @@ export function AccountPageClient({ user }: AccountPageClientProps) {
   const handleCloseWelcome = () => {
     setShowWelcome(false);
     // Redirect to appropriate dashboard using helper
-    const dashboardPath = getDashboardPathFromRoles(user.roles);
+    const dashboardPath = getDashboardPathFromRoles(user.roles as any);
     router.push(dashboardPath);
   };
 
