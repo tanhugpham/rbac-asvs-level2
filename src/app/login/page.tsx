@@ -7,6 +7,7 @@ import { motion } from 'framer-motion';
 import { Shield, Mail, Lock, Eye, EyeOff, Award, Key, AlertCircle, User } from 'lucide-react';
 import { LoadingScreen } from '@/components/ui/Loading';
 import { Card, CardContent } from '@/components/ui/Card';
+export const dynamic = 'force-dynamic';
 
 const DEMO_ACCOUNTS = [
   {
@@ -81,8 +82,9 @@ export default function LoginPage() {
       const redirectUrl = data.redirectTo || '/account';
       console.log('[LOGIN] Redirecting to:', redirectUrl);
       
-      router.push(redirectUrl);
-      router.refresh();
+      setLoading(false);
+      window.location.href = redirectUrl;
+      return;
       
       // Keep loading state until redirect completes
     } catch (err: any) {

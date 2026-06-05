@@ -34,16 +34,6 @@ Em sẽ demo theo thứ tự:
 3. Demo với các roles khác nhau
 4. Giải thích OWASP ASVS compliance
 
-Bắt đầu ạ."
-```
-
-### Lưu ý
-- ✅ Nói chậm, rõ ràng
-- ✅ Pause giữa các câu
-- ✅ Nhìn vào giảng viên khi nói
-- ✅ Tự tin, không đọc giấy
-
----
 
 ## ⭐ PHẦN 2: LIVE ATTACK SIMULATION (5 phút)
 
@@ -51,7 +41,6 @@ Bắt đầu ạ."
 
 ### Bước 1: Login ADMIN (30 giây)
 
-**Thao tác**:
 ```
 1. Mở browser: http://localhost:3000/login
 2. Click vào card "Admin User" (màu đỏ)
@@ -59,7 +48,7 @@ Bắt đầu ạ."
 4. Click "Đăng nhập"
 ```
 
-**Script**:
+
 ```
 "Em sẽ login với ADMIN account để có full access."
 
@@ -92,11 +81,6 @@ Bên phải là terminal để hiển thị real-time attack flow."
 ### Bước 3: Run Scenario 1 - Customer → Admin (2 phút)
 
 **Thao tác**:
-```
-1. Click vào card "Customer → Admin Dashboard"
-2. Đợi animation chạy (mỗi step 600ms)
-3. Quan sát terminal output
-```
 
 **Script chi tiết**:
 
@@ -471,7 +455,6 @@ Hệ thống tuân thủ 5 requirements chính:
    Audit logs không chứa password hay sensitive data.
    Chỉ log: action, user, timestamp, result, severity.
 
-[Giơ 5 ngón tay]
 5. V8.3.4 - Secure Cookie Attributes:
    JWT cookie có:
    - httpOnly: true (prevent XSS)
@@ -486,7 +469,7 @@ Hệ thống tuân thủ 5 requirements chính:
 
 ## 🎯 PHẦN 6: KẾT LUẬN (1 phút)
 
-**Script**:
+
 
 ```
 "Tóm lại, hệ thống có:
@@ -509,83 +492,4 @@ Visualization Features:
 ✅ Security Analytics
 ✅ Live Attack Simulation ⭐
 
-[Pause]
 
-Demo Highlights:
-✅ Live Attack Simulation với real-time animation
-✅ Multi-layer security enforcement
-✅ OWASP ASVS compliance mapping
-✅ Professional UI với dark mode
-
-[Pause]
-
-Em xin cảm ơn thầy/cô và các bạn đã theo dõi.
-Em sẵn sàng trả lời câu hỏi ạ."
-```
-
----
-
-## 💡 TIPS KHI DEMO
-
-### Giọng nói
-- ✅ Nói rõ ràng, không nhanh
-- ✅ Giọng to đủ nghe
-- ✅ Pause giữa các câu
-- ✅ Nhấn mạnh từ khóa quan trọng
-
-### Cử chỉ
-- ✅ Point màn hình khi giải thích
-- ✅ Nhìn vào giảng viên khi nói
-- ✅ Đứng thẳng, tự tin
-- ✅ Không che màn hình
-
-### Xử lý lỗi
-- ✅ Bình tĩnh nếu có lỗi
-- ✅ "Em sẽ refresh lại trang"
-- ✅ Chuyển sang phần khác nếu cần
-- ✅ Không hoảng loạn
-
-### Tương tác
-- ✅ Hỏi "Các bạn thấy đây..."
-- ✅ "Thầy/cô có thể thấy..."
-- ✅ Tạo sự chú ý
-- ✅ Không đọc giấy
-
----
-
-## ⏱️ QUẢN LÝ THỜI GIAN
-
-```
-00:00 - 01:00  Giới thiệu
-01:00 - 06:00  Live Attack Simulation ⭐
-06:00 - 09:00  Security Visualization
-09:00 - 12:00  Demo STAFF & CUSTOMER
-12:00 - 14:00  Giải thích OWASP ASVS
-14:00 - 15:00  Kết luận
-
-Total: 15 phút
-```
-
-### Nếu thiếu thời gian
-- Skip Security Analytics
-- Skip CUSTOMER demo
-- Rút ngắn OWASP ASVS explanation
-
-### Nếu thừa thời gian
-- Demo thêm attack scenarios
-- Giải thích chi tiết hơn
-- Show audit logs trong database
-
----
-
-## 🎬 SẴN SÀNG DEMO!
-
-Sau khi học thuộc script này, bạn đã sẵn sàng demo!
-
-**Tiếp theo**: Đọc **PART 3: CÂU HỎI & TRẢ LỜI** để chuẩn bị cho phần Q&A.
-
----
-
-**Tạo bởi**: Nhóm RBAC Security
-**Cập nhật**: May 18, 2026
-**Version**: 1.0

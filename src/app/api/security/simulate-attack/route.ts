@@ -35,7 +35,7 @@ export async function POST(request: NextRequest) {
 
     if (!result.success) {
       return NextResponse.json(
-        { error: 'Invalid scenario', details: result.error.errors },
+        { error: 'Invalid scenario', details: result.error.issues },
         { status: 400 }
       );
     }

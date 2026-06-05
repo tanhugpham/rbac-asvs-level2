@@ -1,5 +1,6 @@
 'use client';
 
+import { useState } from 'react';
 import { motion } from 'framer-motion';
 import {
   ShoppingBag,
@@ -18,6 +19,8 @@ import { Card, CardContent } from '@/components/ui/Card';
 import { LogoutButton } from '@/components/LogoutButton';
 import { getDashboardPath } from '@/lib/dashboard-routes';
 import type { SessionUser } from '@/types/auth';
+import { BuyNowModal } from '@/components/BuyNowModal';
+import { AddProductModal } from '@/components/AddProductModal';
 
 interface Product {
   id: string;
@@ -56,6 +59,15 @@ function getProductType(name: string): string {
 }
 
 export function ProductsClient({ products, user, canManageProducts }: ProductsClientProps) {
+  const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
+  const [showBuyModal, setShowBuyModal] = useState(false);
+  const [showAddModal, setShowAddModal] = useState(false);
+
+  const handleBuyNow = (product: Product) => {
+    setSelectedProduct(product);
+    setShowBuyModal(true);
+  };
+
   return (
     <div className="min-h-screen bg-security-bg bg-cyber-grid p-6">
       <div className="mx-auto max-w-7xl">
@@ -131,6 +143,7 @@ export function ProductsClient({ products, user, canManageProducts }: ProductsCl
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: 0.2 }}
+              onClick={() => setShowAddModal(true)}
               className="flex items-center gap-2 rounded-lg bg-gradient-to-r from-purple-600 to-pink-600 px-6 py-3 font-semibold text-white shadow-lg transition-all hover:from-purple-700 hover:to-pink-700 hover:shadow-xl"
             >
               <Plus className="h-5 w-5" />
@@ -180,7 +193,10 @@ export function ProductsClient({ products, user, canManageProducts }: ProductsCl
                     : 'Check back later for new products'}
                 </p>
                 {canManageProducts && (
-                  <button className="mt-6 flex items-center gap-2 rounded-lg bg-purple-600 px-6 py-3 font-semibold text-white transition-all hover:bg-purple-700">
+                  <button
+                    onClick={() => setShowAddModal(true)}
+                    className="mt-6 flex items-center gap-2 rounded-lg bg-purple-600 px-6 py-3 font-semibold text-white transition-all hover:bg-purple-700"
+                  >
                     <Plus className="h-5 w-5" />
                     Add First Product
                   </button>
@@ -275,6 +291,7 @@ export function ProductsClient({ products, user, canManageProducts }: ProductsCl
                             </button>
                             <button
                               disabled={product.stock === 0}
+                              onClick={() => handleBuyNow(product)}
                               className="flex flex-1 items-center justify-center gap-2 rounded-lg bg-gradient-to-r from-purple-600 to-pink-600 px-4 py-2 text-sm font-semibold text-white transition-all hover:from-purple-700 hover:to-pink-700 disabled:cursor-not-allowed disabled:opacity-50"
                             >
                               <ShoppingCart className="h-4 w-4" />
@@ -291,6 +308,28 @@ export function ProductsClient({ products, user, canManageProducts }: ProductsCl
           </div>
         )}
       </div>
+
+      {/* Buy Now Modal */}
+      <BuyNowModal
+        isOpen={showBuyModal}
+        onClose={() => {
+          setShowBuyModal(false);
+          setSelectedProduct(null);
+        }}
+        product={selectedProduct}
+        onSuccess={() => {
+          window.location.reload();
+        }}
+      />
+
+      {/* Add Product Modal */}
+      <AddProductModal
+        isOpen={showAddModal}
+        onClose={() => setShowAddModal(false)}
+        onSuccess={() => {
+          window.location.reload();
+        }}
+      />
     </div>
   );
 }

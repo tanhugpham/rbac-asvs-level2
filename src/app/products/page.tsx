@@ -1,8 +1,10 @@
+export const dynamic = 'force-dynamic';
 import { redirect } from 'next/navigation';
 import { getCurrentUser } from '@/lib/auth';
 import { PERMISSIONS } from '@/types/auth';
 import { prisma } from '@/lib/prisma';
 import { ProductsClient } from './ProductsClient';
+
 
 export default async function ProductsPage() {
   try {

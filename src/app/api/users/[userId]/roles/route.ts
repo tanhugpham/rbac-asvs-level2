@@ -31,7 +31,7 @@ export async function POST(
     const result = assignRoleSchema.safeParse(body);
 
     if (!result.success) {
-      throw new ValidationError('Validation failed', result.error.errors);
+      throw new ValidationError('Validation failed', result.error.issues);
     }
 
     const { roleId, action } = result.data;

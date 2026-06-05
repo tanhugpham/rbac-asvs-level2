@@ -1,0 +1,234 @@
+[
+  {
+    "id": "cmpaos6gj00202htw2a33bi2m",
+    "name": "Nguyễn Minh Quân",
+    "email": "admin@example.com",
+    "roles": [
+      "ADMIN"
+    ]
+  },
+  {
+    "id": "cmpaos6z600232htwqgk84jz7",
+    "name": "Trần Quốc Bảo",
+    "email": "staff@example.com",
+    "roles": [
+      "STAFF"
+    ]
+  },
+  {
+    "id": "cmpaos7dm00262htwk424qb1l",
+    "name": "Lê Thị Mai Anh",
+    "email": "maianh.staff@example.com",
+    "roles": [
+      "STAFF"
+    ]
+  },
+  {
+    "id": "cmpaos7se00292htwhvihfkmw",
+    "name": "Phạm Hoàng Nam",
+    "email": "hoangnam.staff@example.com",
+    "roles": [
+      "STAFF"
+    ]
+  },
+  {
+    "id": "cmpaos86k002c2htwtyg66ipv",
+    "name": "Nguyễn Văn An",
+    "email": "an.customer@example.com",
+    "roles": [
+      "CUSTOMER"
+    ]
+  },
+  {
+    "id": "cmpaos8kf002f2htwijxxyo5c",
+    "name": "Trần Thị Bích Ngọc",
+    "email": "bichngoc.customer@example.com",
+    "roles": [
+      "CUSTOMER"
+    ]
+  },
+  {
+    "id": "cmpaos91t002i2htwjga1a8m3",
+    "name": "Lê Minh Khang",
+    "email": "khang.customer@example.com",
+    "roles": [
+      "CUSTOMER"
+    ]
+  },
+  {
+    "id": "cmpaos9fx002l2htwtdvzi1b6",
+    "name": "Phạm Gia Huy",
+    "email": "giahuy.customer@example.com",
+    "roles": [
+      "CUSTOMER"
+    ]
+  },
+  {
+    "id": "cmpaos9u9002o2htwdfnu4fgc",
+    "name": "Hoàng Thanh Tâm",
+    "email": "thanhtam.customer@example.com",
+    "roles": [
+      "CUSTOMER"
+    ]
+  },
+  {
+    "id": "cmpaosa8l002r2htwa14g3wl3",
+    "name": "Đỗ Hải Đăng",
+    "email": "haidang.customer@example.com",
+    "roles": [
+      "CUSTOMER"
+    ]
+  },
+  {
+    "id": "cmpaosamx002u2htw7wz9mnqj",
+    "name": "Vũ Phương Linh",
+    "email": "phuonglinh.customer@example.com",
+    "roles": [
+      "CUSTOMER"
+    ]
+  },
+  {
+    "id": "cmpaosb1d002x2htwxdg599d3",
+    "name": "Bùi Nhật Minh",
+    "email": "nhatminh.customer@example.com",
+    "roles": [
+      "CUSTOMER"
+    ]
+  },
+  {
+    "id": "cmpaosbg000302htwvt9jvip4",
+    "name": "Đặng Khánh Vy",
+    "email": "khanhvy.customer@example.com",
+    "roles": [
+      "CUSTOMER"
+    ]
+  },
+  {
+    "id": "cmpaosbud00332htwn3sywcx3",
+    "name": "Nguyễn Tuấn Kiệt",
+    "email": "tuankiet.customer@example.com",
+    "roles": [
+      "CUSTOMER"
+    ]
+  },
+  {
+    "id": "cmpb1wl130020bqaw31echccg",
+    "name": "Nguyễn Minh Quân",
+    "email": "admin@gmail.com",
+    "roles": [
+      "ADMIN"
+    ]
+  },
+  {
+    "id": "cmpb1wlit0023bqawvvqhvs7a",
+    "name": "Trần Quốc Bảo",
+    "email": "staff@hotmail.com",
+    "roles": [
+      "STAFF"
+    ]
+  },
+  {
+    "id": "cmpb1wlwj0026bqawq3j65vlf",
+    "name": "Lê Thị Mai Anh",
+    "email": "maianh.staff@gmail.com",
+    "roles": [
+      "STAFF"
+    ]
+  },
+  {
+    "id": "cmpb1wm9u0029bqawzb5h1ckp",
+    "name": "Phạm Hoàng Nam",
+    "email": "hoangnam.staff@hotmail.com",
+    "roles": [
+      "STAFF"
+    ]
+  },
+  {
+    "id": "cmpb1wmne002cbqawkpnbjzyw",
+    "name": "Nguyễn Văn An",
+    "email": "an.customer@gmail.com",
+    "roles": [
+      "CUSTOMER"
+    ]
+  },
+  {
+    "id": "cmpb1wn4n002fbqawjwt3thl0",
+    "name": "Trần Thị Bích Ngọc",
+    "email": "bichngoc.customer@hotmail.com",
+    "roles": [
+      "CUSTOMER"
+    ]
+  },
+  {
+    "id": "cmpb1wnhz002ibqawoz5w9kw5",
+    "name": "Lê Minh Khang",
+    "email": "khang.customer@gmail.com",
+    "roles": [
+      "CUSTOMER"
+    ]
+  },
+  {
+    "id": "cmpb1wnva002lbqawmo0hmzx0",
+    "name": "Phạm Gia Huy",
+    "email": "giahuy.customer@hotmail.com",
+    "roles": [
+      "CUSTOMER"
+    ]
+  },
+  {
+    "id": "cmpb1wo8b002obqaws4supluf",
+    "name": "Hoàng Thanh Tâm",
+    "email": "thanhtam.customer@gmail.com",
+    "roles": [
+      "CUSTOMER"
+    ]
+  },
+  {
+    "id": "cmpb1wole002rbqawsx160cca",
+    "name": "Đỗ Hải Đăng",
+    "email": "haidang.customer@hotmail.com",
+    "roles": [
+      "CUSTOMER"
+    ]
+  },
+  {
+    "id": "cmpb1woyp002ubqawql74cuxg",
+    "name": "Vũ Phương Linh",
+    "email": "phuonglinh.customer@gmail.com",
+    "roles": [
+      "CUSTOMER"
+    ]
+  },
+  {
+    "id": "cmpb1wpbw002xbqawwzzxwav2",
+    "name": "Bùi Nhật Minh",
+    "email": "nhatminh.customer@hotmail.com",
+    "roles": [
+      "CUSTOMER"
+    ]
+  },
+  {
+    "id": "cmpb1wpp60030bqawiyo02dlt",
+    "name": "Đặng Khánh Vy",
+    "email": "khanhvy.customer@gmail.com",
+    "roles": [
+      "CUSTOMER"
+    ]
+  },
+  {
+    "id": "cmpb1wq320033bqawhnbhuxoi",
+    "name": "Nguyễn Tuấn Kiệt",
+    "email": "tuankiet.customer@hotmail.com",
+    "roles": [
+      "CUSTOMER"
+    ]
+  },
+  {
+    "id": "cmpql5gie0000ujcswodzrjxk",
+    "name": "Pham Tan Hung",
+    "email": "ptanhung0911@gmail.com",
+    "roles": [
+      "CUSTOMER"
+    ]
+  }
+]

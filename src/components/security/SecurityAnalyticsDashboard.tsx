@@ -154,7 +154,7 @@ export function SecurityAnalyticsDashboard({ analytics }: SecurityAnalyticsDashb
                     cx="50%"
                     cy="50%"
                     labelLine={false}
-                    label={({ role, count }) => `${role}: ${count}`}
+                    label={({ payload, value }) => `${payload?.role}: ${value}`}
                     outerRadius={100}
                     fill="#8884d8"
                     dataKey="count"

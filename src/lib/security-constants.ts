@@ -50,6 +50,7 @@ export const PERMISSION_DESCRIPTIONS: Record<Permission, string> = {
   [PERMISSIONS.PRODUCT_CREATE]: 'Tạo sản phẩm mới',
   [PERMISSIONS.PRODUCT_UPDATE]: 'Cập nhật sản phẩm',
   [PERMISSIONS.PRODUCT_DELETE]: 'Xóa sản phẩm',
+  [PERMISSIONS.ORDER_CREATE]: 'Tạo đơn hàng mới',
   [PERMISSIONS.ORDER_READ]: 'Xem tất cả đơn hàng',
   [PERMISSIONS.ORDER_MANAGE]: 'Quản lý đơn hàng',
   [PERMISSIONS.ORDER_READ_OWN]: 'Xem đơn hàng của chính mình',

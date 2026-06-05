@@ -56,6 +56,7 @@ export const PERMISSIONS = {
 
   // Order Management
   ORDER_READ: 'order:read', // Xem tất cả đơn hàng (admin/staff)
+  ORDER_CREATE: 'order:create', // Tạo đơn hàng mới
   ORDER_MANAGE: 'order:manage', // Quản lý đơn hàng (cập nhật status, etc.)
   ORDER_READ_OWN: 'order:read_own', // Xem đơn hàng của chính mình
 
@@ -94,6 +95,7 @@ export const ROLE_PERMISSIONS: Record<Role, Permission[]> = {
     PERMISSIONS.PRODUCT_UPDATE,
     PERMISSIONS.PRODUCT_DELETE,
     PERMISSIONS.ORDER_READ,
+    PERMISSIONS.ORDER_CREATE,
     PERMISSIONS.ORDER_MANAGE,
     PERMISSIONS.ACCOUNT_READ_SECRET,
     PERMISSIONS.AUDIT_READ,
@@ -106,12 +108,14 @@ export const ROLE_PERMISSIONS: Record<Role, Permission[]> = {
     PERMISSIONS.PRODUCT_UPDATE,
     PERMISSIONS.PRODUCT_DELETE,
     PERMISSIONS.ORDER_READ,
+    PERMISSIONS.ORDER_CREATE,
     PERMISSIONS.ORDER_MANAGE,
     PERMISSIONS.ACCOUNT_READ_SECRET,
   ],
   CUSTOMER: [
     // Customer chỉ xem sản phẩm và đơn hàng của chính mình
     PERMISSIONS.PRODUCT_READ,
+    PERMISSIONS.ORDER_CREATE,
     PERMISSIONS.ORDER_READ_OWN,
   ],
 };

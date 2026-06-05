@@ -1,0 +1,331 @@
+// user_roles_fixed.js
+const { PrismaClient } = require('@prisma/client')
+const prisma = new PrismaClient()
+const fs = require('fs')
+
+// ========== 1. FIX: CẬP NHẬT ROLE CHO PHẠM TẤN HƯNG ==========
+async function fixPhamTanHungRole() {
+    console.log('\n🔧 Đang cập nhật role cho Phạm Tấn Hưng...')
+    
+    // Tìm user Phạm Tấn Hưng
+    const user = await prisma.user.findFirst({
+        where: {
+            name: 'Pham Tan Hung'
+        }
+    })
+    
+    if (!user) {
+        console.log('❌ Không tìm thấy user Phạm Tấn Hưng')
+        return false
+    }
+    
+    // Tìm role ADMIN
+    const adminRole = await prisma.role.findFirst({
+        where: {
+            name: 'ADMIN'
+        }
+    })
+    
+    if (!adminRole) {
+        console.log('❌ Không tìm thấy role ADMIN')
+        return false
+    }
+    
+    // Kiểm tra xem đã có role ADMIN chưa
+    const existingRole = await prisma.userRole.findFirst({
+        where: {
+            userId: user.id,
+            roleId: adminRole.id
+        }
+    })
+    
+    if (!existingRole) {
+        // Xóa role cũ (nếu có)
+        await prisma.userRole.deleteMany({
+            where: {
+                userId: user.id
+            }
+        })
+        
+        // Thêm role ADMIN mới
+        await prisma.userRole.create({
+            data: {
+                userId: user.id,
+                roleId: adminRole.id
+            }
+        })
+        console.log(`✅ Đã cập nhật: ${user.name} (${user.email}) -> ADMIN`)
+    } else {
+        console.log(`ℹ️ ${user.name} đã có role ADMIN rồi!`)
+    }
+    
+    return true
+}
+
+// ========== 2. HIỂN THỊ USER ROLES (ĐÃ GỘP EMAIL) ==========
+async function displayFixedUserRoles() {
+    // Lấy tất cả user roles
+    const data = await prisma.userRole.findMany({
+        include: {
+            user: true,
+            role: true
+        }
+    })
+    
+    // NHÓM THEO TÊN USER (GỘP CÁC EMAIL KHÁC NHAU)
+    const userMap = new Map()
+    
+    data.forEach(item => {
+        const userName = item.user.name
+        
+        if (!userMap.has(userName)) {
+            userMap.set(userName, {
+                name: userName,
+                emails: new Set(),
+                roles: new Set(),
+                balance: item.user.balance,
+                userIds: new Set()
+            })
+        }
+        
+        const user = userMap.get(userName)
+        user.emails.add(item.user.email)
+        user.roles.add(item.role.name)
+        user.userIds.add(item.userId)
+    })
+    
+    // Chuyển đổi sang dạng hiển thị
+    const displayData = Array.from(userMap.values()).map(user => ({
+        'User': user.name,
+        'Email(s)': Array.from(user.emails).join(', '),
+        'Role(s)': Array.from(user.roles).join(', '),
+        'Balance': user.balance || '0',
+        '⚠️ Duplicate': user.userIds.size > 1 ? `Có ${user.userIds.size} accounts` : 'Không'
+    }))
+    
+    console.log('\n========== USER ROLES (FIXED - NO DUPLICATE) ==========\n')
+    console.table(displayData)
+    
+    console.log(`\n📊 Thống kê:`)
+    console.log(`   - Tổng số users (unique): ${userMap.size}`)
+    console.log(`   - Tổng assignments: ${data.length}`)
+    console.log(`   - Users bị duplicate: ${Array.from(userMap.values()).filter(u => u.userIds.size > 1).length}`)
+    
+    return displayData
+}
+
+// ========== 3. THỐNG KÊ ROLE (ĐÃ SỬA LỖI) ==========
+async function roleStatistics() {
+    // Cách 1: Lấy tất cả users và đếm thủ công
+    const allUsers = await prisma.user.findMany({
+        include: {
+            roles: {
+                include: {
+                    role: true
+                }
+            }
+        }
+    })
+    
+    // Đếm số lượng theo role
+    const roleCount = {
+        'ADMIN': 0,
+        'STAFF': 0,
+        'CUSTOMER': 0
+    }
+    
+    // Đếm unique users theo role
+    const userRoleMap = new Map()
+    
+    allUsers.forEach(user => {
+        user.roles.forEach(userRole => {
+            const roleName = userRole.role.name
+            if (!userRoleMap.has(user.id)) {
+                userRoleMap.set(user.id, new Set())
+            }
+            userRoleMap.get(user.id).add(roleName)
+        })
+    })
+    
+    // Đếm số lượng user cho mỗi role
+    for (const [userId, roles] of userRoleMap) {
+        if (roles.has('ADMIN')) roleCount['ADMIN']++
+        if (roles.has('STAFF')) roleCount['STAFF']++
+        if (roles.has('CUSTOMER')) roleCount['CUSTOMER']++
+    }
+    
+    console.log('\n========== THỐNG KÊ ROLE ==========')
+    console.log(`   📌 ADMIN: ${roleCount.ADMIN} user(s)`)
+    console.log(`   📌 STAFF: ${roleCount.STAFF} user(s)`)
+    console.log(`   📌 CUSTOMER: ${roleCount.CUSTOMER} user(s)`)
+    
+    return roleCount
+}
+
+// ========== 4. KIỂM TRA USER TRÙNG LẶP ==========
+async function checkDuplicateUsers() {
+    console.log('\n🧹 Đang kiểm tra users trùng lặp...')
+    
+    // Lấy tất cả users
+    const allUsers = await prisma.user.findMany()
+    
+    // Nhóm theo tên
+    const nameGroups = new Map()
+    allUsers.forEach(user => {
+        if (!nameGroups.has(user.name)) {
+            nameGroups.set(user.name, [])
+        }
+        nameGroups.get(user.name).push(user)
+    })
+    
+    const duplicates = []
+    
+    for (const [name, users] of nameGroups.entries()) {
+        if (users.length > 1) {
+            duplicates.push({ name, count: users.length, users })
+            console.log(`\n⚠️ Tên "${name}" xuất hiện ${users.length} lần:`)
+            users.forEach((user, idx) => {
+                console.log(`   ${idx + 1}. ${user.email} (ID: ${user.id})`)
+            })
+        }
+    }
+    
+    if (duplicates.length === 0) {
+        console.log('✅ Không có user trùng lặp nào!')
+    } else {
+        console.log(`\n📌 Có ${duplicates.length} tên bị trùng lặp`)
+    }
+    
+    return duplicates
+}
+
+// ========== 5. EXPORT JSON CHO CANVAS ==========
+async function exportForCanvas() {
+    const data = await prisma.userRole.findMany({
+        include: {
+            user: true,
+            role: true
+        }
+    })
+    
+    // Nhóm theo user (unique theo tên)
+    const userMap = new Map()
+    data.forEach(item => {
+        const userName = item.user.name
+        if (!userMap.has(userName)) {
+            userMap.set(userName, {
+                name: userName,
+                email: item.user.email,
+                balance: item.user.balance,
+                roles: []
+            })
+        }
+        const user = userMap.get(userName)
+        if (!user.roles.includes(item.role.name)) {
+            user.roles.push(item.role.name)
+        }
+    })
+    
+    // Đếm số lượng theo role
+    let adminCount = 0, staffCount = 0, customerCount = 0
+    
+    Array.from(userMap.values()).forEach(user => {
+        if (user.roles.includes('ADMIN')) adminCount++
+        if (user.roles.includes('STAFF')) staffCount++
+        if (user.roles.includes('CUSTOMER')) customerCount++
+    })
+    
+    const canvasData = {
+        totalUsers: userMap.size,
+        totalAssignments: data.length,
+        users: Array.from(userMap.values()),
+        summary: {
+            admin: adminCount,
+            staff: staffCount,
+            customer: customerCount
+        }
+    }
+    
+    fs.writeFileSync('user_roles_for_canvas.json', JSON.stringify(canvasData, null, 2))
+    console.log('\n📁 Đã xuất file: user_roles_for_canvas.json')
+    
+    console.log('\n📊 Tóm tắt cho Canvas:')
+    console.log(`   - Tổng users: ${canvasData.totalUsers}`)
+    console.log(`   - Admin: ${canvasData.summary.admin}`)
+    console.log(`   - Staff: ${canvasData.summary.staff}`)
+    console.log(`   - Customer: ${canvasData.summary.customer}`)
+    
+    return canvasData
+}
+
+// ========== 6. HIỂN THỊ DANH SÁCH ADMIN ==========
+async function listAdmins() {
+    const data = await prisma.userRole.findMany({
+        where: {
+            role: {
+                name: 'ADMIN'
+            }
+        },
+        include: {
+            user: true,
+            role: true
+        }
+    })
+    
+    // Nhóm theo user để tránh trùng
+    const adminSet = new Map()
+    data.forEach(item => {
+        if (!adminSet.has(item.user.name)) {
+            adminSet.set(item.user.name, {
+                name: item.user.name,
+                email: item.user.email
+            })
+        }
+    })
+    
+    console.log('\n========== DANH SÁCH ADMIN ==========')
+    Array.from(adminSet.values()).forEach(admin => {
+        console.log(`   👑 ${admin.name} (${admin.email})`)
+    })
+    
+    return adminSet
+}
+
+// ========== 7. MAIN ==========
+async function main() {
+    try {
+        console.log('🚀 BẮT ĐẦU XỬ LÝ...\n')
+        
+        // 1. Fix role cho Phạm Tấn Hưng
+        await fixPhamTanHungRole()
+        
+        // 2. Hiển thị dữ liệu đã fix
+        await displayFixedUserRoles()
+        
+        // 3. Thống kê role
+        await roleStatistics()
+        
+        // 4. Kiểm tra users trùng lặp
+        await checkDuplicateUsers()
+        
+        // 5. Hiển thị danh sách Admin
+        await listAdmins()
+        
+        // 6. Export cho Canvas
+        await exportForCanvas()
+        
+        console.log('\n✨ HOÀN THÀNH! ✨')
+        console.log('\n💡 Gợi ý:')
+        console.log('   - Đã cập nhật Phạm Tấn Hưng thành ADMIN')
+        console.log('   - File JSON đã sẵn sàng cho Canvas')
+        console.log('   - Kiểm tra file: user_roles_for_canvas.json')
+        
+    } catch (error) {
+        console.error('❌ Lỗi:', error)
+    } finally {
+        await prisma.$disconnect()
+    }
+}
+
+// Chạy
+main()

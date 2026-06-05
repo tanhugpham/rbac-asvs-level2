@@ -15,23 +15,22 @@ export function AccountPageClient({ user }: AccountPageClientProps) {
   const [showWelcome, setShowWelcome] = useState(true);
   const router = useRouter();
 
-  useEffect(() => {
-    // Auto-close welcome modal after 5 seconds
-    const timer = setTimeout(() => {
-      setShowWelcome(false);
-      // Redirect to appropriate dashboard using helper
-      const dashboardPath = getDashboardPathFromRoles(user.roles as Role[]);
-      router.push(dashboardPath);
-    }, 5000);
+    useEffect(() => {
+      // Auto-close welcome modal after 5 seconds
+      const timer = setTimeout(() => {
+        setShowWelcome(false);
+        // Redirect to appropriate dashboard using helper
+        const dashboardPath = getDashboardPathFromRoles(user.roles as Role[]);
+        router.push(dashboardPath);
+      }, 5000);
 
     return () => clearTimeout(timer);
   }, [user.roles, router]);
 
   const handleCloseWelcome = () => {
     setShowWelcome(false);
-    // Redirect to appropriate dashboard using helper
-    const dashboardPath = getDashboardPathFromRoles(user.roles as Role[]);
-    router.push(dashboardPath);
+
+    
   };
 
   return (

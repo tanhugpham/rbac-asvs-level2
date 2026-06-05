@@ -1,11 +1,10 @@
 'use client';
 
 import { useState } from 'react';
-import { useRouter } from 'next/navigation';
 import Link from 'next/link';
+import { Mail, Lock, User, ShieldCheck, AlertCircle } from 'lucide-react';
 
 export default function RegisterPage() {
-  const router = useRouter();
   const [formData, setFormData] = useState({
     email: '',
     password: '',
@@ -29,18 +28,16 @@ export default function RegisterPage() {
       const data = await response.json();
 
       if (!data.success) {
-        if (data.error?.errors) {
-          setError(data.error.errors.map((e: any) => e.message).join(', '));
+        if (data.error?.issues) {
+          setError(data.error.issues.map((e: any) => e.message).join(', '));
         } else {
           setError(data.error?.message || 'Registration failed');
         }
         return;
       }
 
-      // Redirect to account page
-      router.push('/account');
-      router.refresh();
-    } catch (err) {
+      window.location.href = '/account';
+    } catch {
       setError('An unexpected error occurred');
     } finally {
       setLoading(false);
@@ -48,71 +45,106 @@ export default function RegisterPage() {
   };
 
   return (
-    <div className="container" style={{ paddingTop: '60px' }}>
-      <div className="card" style={{ maxWidth: '400px', margin: '0 auto' }}>
-        <h1 style={{ fontSize: '24px', marginBottom: '24px', textAlign: 'center' }}>
-          Register
-        </h1>
+    <main className="min-h-screen bg-[#0a0e1a] bg-cyber-grid px-4 py-10 text-white">
+      <div className="mx-auto flex w-full max-w-md flex-col items-center">
+        <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-br from-blue-500 to-purple-600 shadow-lg shadow-blue-500/30">
+          <ShieldCheck className="h-9 w-9 text-white" />
+        </div>
 
-        <form onSubmit={handleSubmit}>
-          <div className="form-group">
-            <label htmlFor="name">Name</label>
-            <input
-              id="name"
-              type="text"
-              value={formData.name}
-              onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-              required
-              autoComplete="name"
-            />
-          </div>
+        <h1 className="text-center text-4xl font-bold">Security Portal</h1>
+        <p className="mt-2 text-center text-slate-400">
+          Create RBAC protected account
+        </p>
 
-          <div className="form-group">
-            <label htmlFor="email">Email</label>
-            <input
-              id="email"
-              type="email"
-              value={formData.email}
-              onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-              required
-              autoComplete="email"
-            />
-          </div>
+        <div className="mt-10 w-full rounded-3xl border border-slate-700/80 bg-slate-900/80 p-8 shadow-2xl backdrop-blur">
+          <h2 className="mb-8 text-3xl font-bold">Register</h2>
 
-          <div className="form-group">
-            <label htmlFor="password">Password</label>
-            <input
-              id="password"
-              type="password"
-              value={formData.password}
-              onChange={(e) => setFormData({ ...formData, password: e.target.value })}
-              required
-              autoComplete="new-password"
-            />
-            <small style={{ fontSize: '12px', color: '#666' }}>
-              Must be at least 8 characters with uppercase, lowercase, number, and special character
-            </small>
-          </div>
+          <form onSubmit={handleSubmit} className="space-y-5">
+            <div className="space-y-2">
+              <label htmlFor="name" className="text-sm font-semibold text-slate-300">
+                Name
+              </label>
+              <div className="flex items-center rounded-xl border border-slate-700 bg-slate-950/70 px-4 focus-within:border-blue-500">
+                <User className="mr-3 h-5 w-5 text-slate-400" />
+                <input
+                  id="name"
+                  type="text"
+                  value={formData.name}
+                  onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                  required
+                  autoComplete="name"
+                  className="w-full bg-transparent py-4 text-white outline-none placeholder:text-slate-500"
+                  placeholder="Nguyễn Văn An"
+                />
+              </div>
+            </div>
 
-          {error && <div className="error">{error}</div>}
+            <div className="space-y-2">
+              <label htmlFor="email" className="text-sm font-semibold text-slate-300">
+                Email Address
+              </label>
+              <div className="flex items-center rounded-xl border border-slate-700 bg-slate-950/70 px-4 focus-within:border-blue-500">
+                <Mail className="mr-3 h-5 w-5 text-slate-400" />
+                <input
+                  id="email"
+                  type="email"
+                  value={formData.email}
+                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                  required
+                  autoComplete="email"
+                  className="w-full bg-transparent py-4 text-white outline-none placeholder:text-slate-500"
+                  placeholder="user@gmail.com"
+                />
+              </div>
+            </div>
 
-          <button
-            type="submit"
-            className="btn btn-primary"
-            disabled={loading}
-            style={{ width: '100%', marginTop: '16px' }}
-          >
-            {loading ? 'Creating account...' : 'Register'}
-          </button>
-        </form>
+            <div className="space-y-2">
+              <label htmlFor="password" className="text-sm font-semibold text-slate-300">
+                Password
+              </label>
+              <div className="flex items-center rounded-xl border border-slate-700 bg-slate-950/70 px-4 focus-within:border-blue-500">
+                <Lock className="mr-3 h-5 w-5 text-slate-400" />
+                <input
+                  id="password"
+                  type="password"
+                  value={formData.password}
+                  onChange={(e) => setFormData({ ...formData, password: e.target.value })}
+                  required
+                  autoComplete="new-password"
+                  className="w-full bg-transparent py-4 text-white outline-none placeholder:text-slate-500"
+                  placeholder="••••••••"
+                />
+              </div>
+              <p className="text-xs leading-relaxed text-slate-500">
+                Must be at least 8 characters with uppercase, lowercase, number,
+                and special character.
+              </p>
+            </div>
 
-        <div style={{ marginTop: '16px', textAlign: 'center', fontSize: '14px' }}>
-          Already have an account?{' '}
-          <Link href="/login" style={{ color: '#0070f3' }}>
-            Login
-          </Link>
+            {error && (
+              <div className="flex items-start gap-3 rounded-xl border border-red-500/40 bg-red-500/10 p-4 text-sm text-red-300">
+                <AlertCircle className="mt-0.5 h-5 w-5 shrink-0" />
+                <span>{error}</span>
+              </div>
+            )}
+
+            <button
+              type="submit"
+              disabled={loading}
+              className="w-full rounded-xl bg-gradient-to-r from-blue-600 to-purple-600 px-5 py-4 font-bold text-white transition hover:from-blue-500 hover:to-purple-500 disabled:cursor-not-allowed disabled:opacity-60"
+            >
+              {loading ? 'Creating account...' : 'Register'}
+            </button>
+          </form>
+
+          <p className="mt-8 text-center text-sm text-slate-400">
+            Already have an account?{' '}
+            <Link href="/login" className="font-semibold text-blue-400 hover:text-blue-300">
+              Login
+            </Link>
+          </p>
         </div>
       </div>
-    </div>
+    </main>
   );
 }

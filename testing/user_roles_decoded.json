@@ -1,0 +1,460 @@
+{
+  "totalAssignments": 29,
+  "totalUsers": 15,
+  "userRoles": {
+    "Bùi Nhật Minh": {
+      "email": "nhatminh.customer@example.com",
+      "roles": [
+        {
+          "name": "CUSTOMER",
+          "description": "Khách hàng với quyền truy cập cơ bản"
+        },
+        {
+          "name": "CUSTOMER",
+          "description": "Khách hàng với quyền truy cập cơ bản"
+        }
+      ]
+    },
+    "Đặng Khánh Vy": {
+      "email": "khanhvy.customer@example.com",
+      "roles": [
+        {
+          "name": "CUSTOMER",
+          "description": "Khách hàng với quyền truy cập cơ bản"
+        },
+        {
+          "name": "CUSTOMER",
+          "description": "Khách hàng với quyền truy cập cơ bản"
+        }
+      ]
+    },
+    "Đỗ Hải Đăng": {
+      "email": "haidang.customer@example.com",
+      "roles": [
+        {
+          "name": "CUSTOMER",
+          "description": "Khách hàng với quyền truy cập cơ bản"
+        },
+        {
+          "name": "CUSTOMER",
+          "description": "Khách hàng với quyền truy cập cơ bản"
+        }
+      ]
+    },
+    "Hoàng Thanh Tâm": {
+      "email": "thanhtam.customer@example.com",
+      "roles": [
+        {
+          "name": "CUSTOMER",
+          "description": "Khách hàng với quyền truy cập cơ bản"
+        },
+        {
+          "name": "CUSTOMER",
+          "description": "Khách hàng với quyền truy cập cơ bản"
+        }
+      ]
+    },
+    "Lê Minh Khang": {
+      "email": "khang.customer@gmail.com",
+      "roles": [
+        {
+          "name": "CUSTOMER",
+          "description": "Khách hàng với quyền truy cập cơ bản"
+        },
+        {
+          "name": "CUSTOMER",
+          "description": "Khách hàng với quyền truy cập cơ bản"
+        }
+      ]
+    },
+    "Lê Thị Mai Anh": {
+      "email": "maianh.staff@gmail.com",
+      "roles": [
+        {
+          "name": "STAFF",
+          "description": "Nhân viên quản lý sản phẩm và đơn hàng"
+        },
+        {
+          "name": "STAFF",
+          "description": "Nhân viên quản lý sản phẩm và đơn hàng"
+        }
+      ]
+    },
+    "Nguyễn Minh Quân": {
+      "email": "admin@example.com",
+      "roles": [
+        {
+          "name": "ADMIN",
+          "description": "Quản trị viên có toàn quyền"
+        },
+        {
+          "name": "ADMIN",
+          "description": "Quản trị viên có toàn quyền"
+        }
+      ]
+    },
+    "Nguyễn Tuấn Kiệt": {
+      "email": "tuankiet.customer@example.com",
+      "roles": [
+        {
+          "name": "CUSTOMER",
+          "description": "Khách hàng với quyền truy cập cơ bản"
+        },
+        {
+          "name": "CUSTOMER",
+          "description": "Khách hàng với quyền truy cập cơ bản"
+        }
+      ]
+    },
+    "Nguyễn Văn An": {
+      "email": "an.customer@gmail.com",
+      "roles": [
+        {
+          "name": "CUSTOMER",
+          "description": "Khách hàng với quyền truy cập cơ bản"
+        },
+        {
+          "name": "CUSTOMER",
+          "description": "Khách hàng với quyền truy cập cơ bản"
+        }
+      ]
+    },
+    "Phạm Gia Huy": {
+      "email": "giahuy.customer@hotmail.com",
+      "roles": [
+        {
+          "name": "CUSTOMER",
+          "description": "Khách hàng với quyền truy cập cơ bản"
+        },
+        {
+          "name": "CUSTOMER",
+          "description": "Khách hàng với quyền truy cập cơ bản"
+        }
+      ]
+    },
+    "Phạm Hoàng Nam": {
+      "email": "hoangnam.staff@example.com",
+      "roles": [
+        {
+          "name": "STAFF",
+          "description": "Nhân viên quản lý sản phẩm và đơn hàng"
+        },
+        {
+          "name": "STAFF",
+          "description": "Nhân viên quản lý sản phẩm và đơn hàng"
+        }
+      ]
+    },
+    "Pham Tan Hung": {
+      "email": "ptanhung0911@gmail.com",
+      "roles": [
+        {
+          "name": "CUSTOMER",
+          "description": "Khách hàng với quyền truy cập cơ bản"
+        }
+      ]
+    },
+    "Trần Quốc Bảo": {
+      "email": "staff@example.com",
+      "roles": [
+        {
+          "name": "STAFF",
+          "description": "Nhân viên quản lý sản phẩm và đơn hàng"
+        },
+        {
+          "name": "STAFF",
+          "description": "Nhân viên quản lý sản phẩm và đơn hàng"
+        }
+      ]
+    },
+    "Trần Thị Bích Ngọc": {
+      "email": "bichngoc.customer@hotmail.com",
+      "roles": [
+        {
+          "name": "CUSTOMER",
+          "description": "Khách hàng với quyền truy cập cơ bản"
+        },
+        {
+          "name": "CUSTOMER",
+          "description": "Khách hàng với quyền truy cập cơ bản"
+        }
+      ]
+    },
+    "Vũ Phương Linh": {
+      "email": "phuonglinh.customer@example.com",
+      "roles": [
+        {
+          "name": "CUSTOMER",
+          "description": "Khách hàng với quyền truy cập cơ bản"
+        },
+        {
+          "name": "CUSTOMER",
+          "description": "Khách hàng với quyền truy cập cơ bản"
+        }
+      ]
+    }
+  },
+  "rawData": [
+    {
+      "userId": "cmpaosb1d002x2htwxdg599d3",
+      "userName": "Bùi Nhật Minh",
+      "userEmail": "nhatminh.customer@example.com",
+      "roleId": "cmpaos503000j2htw6nnug1dr",
+      "roleName": "CUSTOMER",
+      "roleDescription": "Khách hàng với quyền truy cập cơ bản",
+      "assignedAt": "2026-05-18T04:11:01.876Z"
+    },
+    {
+      "userId": "cmpb1wpbw002xbqawwzzxwav2",
+      "userName": "Bùi Nhật Minh",
+      "userEmail": "nhatminh.customer@hotmail.com",
+      "roleId": "cmpaos503000j2htw6nnug1dr",
+      "roleName": "CUSTOMER",
+      "roleDescription": "Khách hàng với quyền truy cập cơ bản",
+      "assignedAt": "2026-05-18T10:18:22.007Z"
+    },
+    {
+      "userId": "cmpaosbg000302htwvt9jvip4",
+      "userName": "Đặng Khánh Vy",
+      "userEmail": "khanhvy.customer@example.com",
+      "roleId": "cmpaos503000j2htw6nnug1dr",
+      "roleName": "CUSTOMER",
+      "roleDescription": "Khách hàng với quyền truy cập cơ bản",
+      "assignedAt": "2026-05-18T04:11:02.385Z"
+    },
+    {
+      "userId": "cmpb1wpp60030bqawiyo02dlt",
+      "userName": "Đặng Khánh Vy",
+      "userEmail": "khanhvy.customer@gmail.com",
+      "roleId": "cmpaos503000j2htw6nnug1dr",
+      "roleName": "CUSTOMER",
+      "roleDescription": "Khách hàng với quyền truy cập cơ bản",
+      "assignedAt": "2026-05-18T10:18:22.497Z"
+    },
+    {
+      "userId": "cmpaosa8l002r2htwa14g3wl3",
+      "userName": "Đỗ Hải Đăng",
+      "userEmail": "haidang.customer@example.com",
+      "roleId": "cmpaos503000j2htw6nnug1dr",
+      "roleName": "CUSTOMER",
+      "roleDescription": "Khách hàng với quyền truy cập cơ bản",
+      "assignedAt": "2026-05-18T04:11:00.824Z"
+    },
+    {
+      "userId": "cmpb1wole002rbqawsx160cca",
+      "userName": "Đỗ Hải Đăng",
+      "userEmail": "haidang.customer@hotmail.com",
+      "roleId": "cmpaos503000j2htw6nnug1dr",
+      "roleName": "CUSTOMER",
+      "roleDescription": "Khách hàng với quyền truy cập cơ bản",
+      "assignedAt": "2026-05-18T10:18:21.057Z"
+    },
+    {
+      "userId": "cmpaos9u9002o2htwdfnu4fgc",
+      "userName": "Hoàng Thanh Tâm",
+      "userEmail": "thanhtam.customer@example.com",
+      "roleId": "cmpaos503000j2htw6nnug1dr",
+      "roleName": "CUSTOMER",
+      "roleDescription": "Khách hàng với quyền truy cập cơ bản",
+      "assignedAt": "2026-05-18T04:11:00.306Z"
+    },
+    {
+      "userId": "cmpb1wo8b002obqaws4supluf",
+      "userName": "Hoàng Thanh Tâm",
+      "userEmail": "thanhtam.customer@gmail.com",
+      "roleId": "cmpaos503000j2htw6nnug1dr",
+      "roleName": "CUSTOMER",
+      "roleDescription": "Khách hàng với quyền truy cập cơ bản",
+      "assignedAt": "2026-05-18T10:18:20.586Z"
+    },
+    {
+      "userId": "cmpb1wnhz002ibqawoz5w9kw5",
+      "userName": "Lê Minh Khang",
+      "userEmail": "khang.customer@gmail.com",
+      "roleId": "cmpaos503000j2htw6nnug1dr",
+      "roleName": "CUSTOMER",
+      "roleDescription": "Khách hàng với quyền truy cập cơ bản",
+      "assignedAt": "2026-05-18T10:18:19.639Z"
+    },
+    {
+      "userId": "cmpaos91t002i2htwjga1a8m3",
+      "userName": "Lê Minh Khang",
+      "userEmail": "khang.customer@example.com",
+      "roleId": "cmpaos503000j2htw6nnug1dr",
+      "roleName": "CUSTOMER",
+      "roleDescription": "Khách hàng với quyền truy cập cơ bản",
+      "assignedAt": "2026-05-18T04:10:59.280Z"
+    },
+    {
+      "userId": "cmpb1wlwj0026bqawq3j65vlf",
+      "userName": "Lê Thị Mai Anh",
+      "userEmail": "maianh.staff@gmail.com",
+      "roleId": "cmpaos4wj000i2htwbu1431tf",
+      "roleName": "STAFF",
+      "roleDescription": "Nhân viên quản lý sản phẩm và đơn hàng",
+      "assignedAt": "2026-05-18T10:18:17.566Z"
+    },
+    {
+      "userId": "cmpaos7dm00262htwk424qb1l",
+      "userName": "Lê Thị Mai Anh",
+      "userEmail": "maianh.staff@example.com",
+      "roleId": "cmpaos4wj000i2htwbu1431tf",
+      "roleName": "STAFF",
+      "roleDescription": "Nhân viên quản lý sản phẩm và đơn hàng",
+      "assignedAt": "2026-05-18T04:10:57.125Z"
+    },
+    {
+      "userId": "cmpaos6gj00202htw2a33bi2m",
+      "userName": "Nguyễn Minh Quân",
+      "userEmail": "admin@example.com",
+      "roleId": "cmpaos4qh000h2htwmmegrsly",
+      "roleName": "ADMIN",
+      "roleDescription": "Quản trị viên có toàn quyền",
+      "assignedAt": "2026-05-18T04:10:56.008Z"
+    },
+    {
+      "userId": "cmpb1wl130020bqaw31echccg",
+      "userName": "Nguyễn Minh Quân",
+      "userEmail": "admin@gmail.com",
+      "roleId": "cmpaos4qh000h2htwmmegrsly",
+      "roleName": "ADMIN",
+      "roleDescription": "Quản trị viên có toàn quyền",
+      "assignedAt": "2026-05-18T10:18:16.512Z"
+    },
+    {
+      "userId": "cmpaosbud00332htwn3sywcx3",
+      "userName": "Nguyễn Tuấn Kiệt",
+      "userEmail": "tuankiet.customer@example.com",
+      "roleId": "cmpaos503000j2htw6nnug1dr",
+      "roleName": "CUSTOMER",
+      "roleDescription": "Khách hàng với quyền truy cập cơ bản",
+      "assignedAt": "2026-05-18T04:11:02.916Z"
+    },
+    {
+      "userId": "cmpb1wq320033bqawhnbhuxoi",
+      "userName": "Nguyễn Tuấn Kiệt",
+      "userEmail": "tuankiet.customer@hotmail.com",
+      "roleId": "cmpaos503000j2htw6nnug1dr",
+      "roleName": "CUSTOMER",
+      "roleDescription": "Khách hàng với quyền truy cập cơ bản",
+      "assignedAt": "2026-05-18T10:18:22.982Z"
+    },
+    {
+      "userId": "cmpb1wmne002cbqawkpnbjzyw",
+      "userName": "Nguyễn Văn An",
+      "userEmail": "an.customer@gmail.com",
+      "roleId": "cmpaos503000j2htw6nnug1dr",
+      "roleName": "CUSTOMER",
+      "roleDescription": "Khách hàng với quyền truy cập cơ bản",
+      "assignedAt": "2026-05-18T10:18:18.672Z"
+    },
+    {
+      "userId": "cmpaos86k002c2htwtyg66ipv",
+      "userName": "Nguyễn Văn An",
+      "userEmail": "an.customer@example.com",
+      "roleId": "cmpaos503000j2htw6nnug1dr",
+      "roleName": "CUSTOMER",
+      "roleDescription": "Khách hàng với quyền truy cập cơ bản",
+      "assignedAt": "2026-05-18T04:10:58.154Z"
+    },
+    {
+      "userId": "cmpb1wnva002lbqawmo0hmzx0",
+      "userName": "Phạm Gia Huy",
+      "userEmail": "giahuy.customer@hotmail.com",
+      "roleId": "cmpaos503000j2htw6nnug1dr",
+      "roleName": "CUSTOMER",
+      "roleDescription": "Khách hàng với quyền truy cập cơ bản",
+      "assignedAt": "2026-05-18T10:18:20.112Z"
+    },
+    {
+      "userId": "cmpaos9fx002l2htwtdvzi1b6",
+      "userName": "Phạm Gia Huy",
+      "userEmail": "giahuy.customer@example.com",
+      "roleId": "cmpaos503000j2htw6nnug1dr",
+      "roleName": "CUSTOMER",
+      "roleDescription": "Khách hàng với quyền truy cập cơ bản",
+      "assignedAt": "2026-05-18T04:10:59.794Z"
+    },
+    {
+      "userId": "cmpaos7se00292htwhvihfkmw",
+      "userName": "Phạm Hoàng Nam",
+      "userEmail": "hoangnam.staff@example.com",
+      "roleId": "cmpaos4wj000i2htwbu1431tf",
+      "roleName": "STAFF",
+      "roleDescription": "Nhân viên quản lý sản phẩm và đơn hàng",
+      "assignedAt": "2026-05-18T04:10:57.645Z"
+    },
+    {
+      "userId": "cmpb1wm9u0029bqawzb5h1ckp",
+      "userName": "Phạm Hoàng Nam",
+      "userEmail": "hoangnam.staff@hotmail.com",
+      "roleId": "cmpaos4wj000i2htwbu1431tf",
+      "roleName": "STAFF",
+      "roleDescription": "Nhân viên quản lý sản phẩm và đơn hàng",
+      "assignedAt": "2026-05-18T10:18:18.047Z"
+    },
+    {
+      "userId": "cmpql5gie0000ujcswodzrjxk",
+      "userName": "Pham Tan Hung",
+      "userEmail": "ptanhung0911@gmail.com",
+      "roleId": "cmpaos503000j2htw6nnug1dr",
+      "roleName": "CUSTOMER",
+      "roleDescription": "Khách hàng với quyền truy cập cơ bản",
+      "assignedAt": "2026-05-29T07:13:35.701Z"
+    },
+    {
+      "userId": "cmpaos6z600232htwqgk84jz7",
+      "userName": "Trần Quốc Bảo",
+      "userEmail": "staff@example.com",
+      "roleId": "cmpaos4wj000i2htwbu1431tf",
+      "roleName": "STAFF",
+      "roleDescription": "Nhân viên quản lý sản phẩm và đơn hàng",
+      "assignedAt": "2026-05-18T04:10:56.595Z"
+    },
+    {
+      "userId": "cmpb1wlit0023bqawvvqhvs7a",
+      "userName": "Trần Quốc Bảo",
+      "userEmail": "staff@hotmail.com",
+      "roleId": "cmpaos4wj000i2htwbu1431tf",
+      "roleName": "STAFF",
+      "roleDescription": "Nhân viên quản lý sản phẩm và đơn hàng",
+      "assignedAt": "2026-05-18T10:18:17.072Z"
+    },
+    {
+      "userId": "cmpb1wn4n002fbqawjwt3thl0",
+      "userName": "Trần Thị Bích Ngọc",
+      "userEmail": "bichngoc.customer@hotmail.com",
+      "roleId": "cmpaos503000j2htw6nnug1dr",
+      "roleName": "CUSTOMER",
+      "roleDescription": "Khách hàng với quyền truy cập cơ bản",
+      "assignedAt": "2026-05-18T10:18:19.161Z"
+    },
+    {
+      "userId": "cmpaos8kf002f2htwijxxyo5c",
+      "userName": "Trần Thị Bích Ngọc",
+      "userEmail": "bichngoc.customer@example.com",
+      "roleId": "cmpaos503000j2htw6nnug1dr",
+      "roleName": "CUSTOMER",
+      "roleDescription": "Khách hàng với quyền truy cập cơ bản",
+      "assignedAt": "2026-05-18T04:10:58.765Z"
+    },
+    {
+      "userId": "cmpaosamx002u2htw7wz9mnqj",
+      "userName": "Vũ Phương Linh",
+      "userEmail": "phuonglinh.customer@example.com",
+      "roleId": "cmpaos503000j2htw6nnug1dr",
+      "roleName": "CUSTOMER",
+      "roleDescription": "Khách hàng với quyền truy cập cơ bản",
+      "assignedAt": "2026-05-18T04:11:01.342Z"
+    },
+    {
+      "userId": "cmpb1woyp002ubqawql74cuxg",
+      "userName": "Vũ Phương Linh",
+      "userEmail": "phuonglinh.customer@gmail.com",
+      "roleId": "cmpaos503000j2htw6nnug1dr",
+      "roleName": "CUSTOMER",
+      "roleDescription": "Khách hàng với quyền truy cập cơ bản",
+      "assignedAt": "2026-05-18T10:18:21.538Z"
+    }
+  ]
+}

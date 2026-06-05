@@ -1,0 +1,158 @@
+[
+  {
+    "id": "cmpaos503000j2htw6nnug1dr",
+    "roleName": "CUSTOMER",
+    "permissionName": "order:read_own",
+    "createdAt": "2026-05-28T11:54:21.505Z"
+  },
+  {
+    "id": "cmpaos503000j2htw6nnug1dr",
+    "roleName": "CUSTOMER",
+    "permissionName": "product:read",
+    "createdAt": "2026-05-28T11:54:21.422Z"
+  },
+  {
+    "id": "cmpaos4wj000i2htwbu1431tf",
+    "roleName": "STAFF",
+    "permissionName": "account:read_secret",
+    "createdAt": "2026-05-28T11:54:21.346Z"
+  },
+  {
+    "id": "cmpaos4wj000i2htwbu1431tf",
+    "roleName": "STAFF",
+    "permissionName": "order:manage",
+    "createdAt": "2026-05-28T11:54:21.171Z"
+  },
+  {
+    "id": "cmpaos4wj000i2htwbu1431tf",
+    "roleName": "STAFF",
+    "permissionName": "order:read",
+    "createdAt": "2026-05-28T11:54:21.049Z"
+  },
+  {
+    "id": "cmpaos4wj000i2htwbu1431tf",
+    "roleName": "STAFF",
+    "permissionName": "product:delete",
+    "createdAt": "2026-05-28T11:54:20.952Z"
+  },
+  {
+    "id": "cmpaos4wj000i2htwbu1431tf",
+    "roleName": "STAFF",
+    "permissionName": "product:update",
+    "createdAt": "2026-05-28T11:54:20.798Z"
+  },
+  {
+    "id": "cmpaos4wj000i2htwbu1431tf",
+    "roleName": "STAFF",
+    "permissionName": "product:create",
+    "createdAt": "2026-05-28T11:54:20.591Z"
+  },
+  {
+    "id": "cmpaos4wj000i2htwbu1431tf",
+    "roleName": "STAFF",
+    "permissionName": "product:read",
+    "createdAt": "2026-05-28T11:54:20.430Z"
+  },
+  {
+    "id": "cmpaos4wj000i2htwbu1431tf",
+    "roleName": "STAFF",
+    "permissionName": "user:read",
+    "createdAt": "2026-05-28T11:54:20.348Z"
+  },
+  {
+    "id": "cmpaos4qh000h2htwmmegrsly",
+    "roleName": "ADMIN",
+    "permissionName": "audit:read",
+    "createdAt": "2026-05-28T11:54:20.244Z"
+  },
+  {
+    "id": "cmpaos4qh000h2htwmmegrsly",
+    "roleName": "ADMIN",
+    "permissionName": "account:read_secret",
+    "createdAt": "2026-05-28T11:54:20.102Z"
+  },
+  {
+    "id": "cmpaos4qh000h2htwmmegrsly",
+    "roleName": "ADMIN",
+    "permissionName": "order:manage",
+    "createdAt": "2026-05-28T11:54:20.004Z"
+  },
+  {
+    "id": "cmpaos4qh000h2htwmmegrsly",
+    "roleName": "ADMIN",
+    "permissionName": "order:read",
+    "createdAt": "2026-05-28T11:54:19.563Z"
+  },
+  {
+    "id": "cmpaos4qh000h2htwmmegrsly",
+    "roleName": "ADMIN",
+    "permissionName": "product:delete",
+    "createdAt": "2026-05-28T11:54:19.396Z"
+  },
+  {
+    "id": "cmpaos4qh000h2htwmmegrsly",
+    "roleName": "ADMIN",
+    "permissionName": "product:update",
+    "createdAt": "2026-05-28T11:54:19.258Z"
+  },
+  {
+    "id": "cmpaos4qh000h2htwmmegrsly",
+    "roleName": "ADMIN",
+    "permissionName": "product:create",
+    "createdAt": "2026-05-28T11:54:19.043Z"
+  },
+  {
+    "id": "cmpaos4qh000h2htwmmegrsly",
+    "roleName": "ADMIN",
+    "permissionName": "product:read",
+    "createdAt": "2026-05-28T11:54:18.938Z"
+  },
+  {
+    "id": "cmpaos4qh000h2htwmmegrsly",
+    "roleName": "ADMIN",
+    "permissionName": "role:delete",
+    "createdAt": "2026-05-28T11:54:18.838Z"
+  },
+  {
+    "id": "cmpaos4qh000h2htwmmegrsly",
+    "roleName": "ADMIN",
+    "permissionName": "role:update",
+    "createdAt": "2026-05-28T11:54:18.716Z"
+  },
+  {
+    "id": "cmpaos4qh000h2htwmmegrsly",
+    "roleName": "ADMIN",
+    "permissionName": "role:create",
+    "createdAt": "2026-05-28T11:54:18.590Z"
+  },
+  {
+    "id": "cmpaos4qh000h2htwmmegrsly",
+    "roleName": "ADMIN",
+    "permissionName": "role:read",
+    "createdAt": "2026-05-28T11:54:18.420Z"
+  },
+  {
+    "id": "cmpaos4qh000h2htwmmegrsly",
+    "roleName": "ADMIN",
+    "permissionName": "user:delete",
+    "createdAt": "2026-05-28T11:54:18.325Z"
+  },
+  {
+    "id": "cmpaos4qh000h2htwmmegrsly",
+    "roleName": "ADMIN",
+    "permissionName": "user:update",
+    "createdAt": "2026-05-28T11:54:18.243Z"
+  },
+  {
+    "id": "cmpaos4qh000h2htwmmegrsly",
+    "roleName": "ADMIN",
+    "permissionName": "user:create",
+    "createdAt": "2026-05-28T11:54:18.100Z"
+  },
+  {
+    "id": "cmpaos4qh000h2htwmmegrsly",
+    "roleName": "ADMIN",
+    "permissionName": "user:read",
+    "createdAt": "2026-05-28T11:54:17.660Z"
+  }
+]

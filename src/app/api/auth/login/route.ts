@@ -27,8 +27,8 @@ export async function POST(request: NextRequest) {
     // Validate input
     const result = loginSchema.safeParse(body);
     if (!result.success) {
-      console.log('[LOGIN API] Validation failed:', result.error.errors);
-      throw new ValidationError('Validation failed', result.error.errors);
+      console.log('[LOGIN API] Validation failed:', result.error.issues);
+      throw new ValidationError('Validation failed', result.error.issues);
     }
 
     const { email, password } = result.data;

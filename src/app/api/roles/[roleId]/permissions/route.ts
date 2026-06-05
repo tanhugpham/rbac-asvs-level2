@@ -30,7 +30,7 @@ export async function POST(
     const result = updatePermissionsSchema.safeParse(body);
 
     if (!result.success) {
-      throw new ValidationError('Validation failed', result.error.errors);
+      throw new ValidationError('Validation failed', result.error.issues);
     }
 
     const { permissionIds } = result.data;

@@ -176,6 +176,13 @@ export function CustomerAccountDashboard({ user, stats }: CustomerAccountDashboa
                   color="blue"
                 />
                 <QuickActionCard
+                  title="Mua thêm tài khoản"
+                  description="Xem sản phẩm và mua tài khoản mới"
+                  icon={ShoppingBag}
+                  href="/products"
+                  color="purple"
+                />
+                <QuickActionCard
                   title="Profile Settings"
                   description="Cập nhật thông tin cá nhân"
                   icon={User}

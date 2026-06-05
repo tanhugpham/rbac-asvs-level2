@@ -2,7 +2,7 @@
  * Admin Page: Role Management
  * Yêu cầu permission: role:read
  */
-
+export const dynamic = 'force-dynamic';
 import { requirePermission } from '@/lib/auth';
 import { PERMISSIONS } from '@/types/auth';
 import { prisma } from '@/lib/prisma';

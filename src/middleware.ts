@@ -8,6 +8,7 @@
 
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
+import { verifyToken } from './lib/jwt';
 import { verifyTokenEdge } from './lib/jwt-edge';
 
 const AUTH_COOKIE_NAME = 'auth-token';
@@ -41,7 +42,7 @@ export async function middleware(request: NextRequest) {
   const token = request.cookies.get(AUTH_COOKIE_NAME)?.value;
   console.log('[MIDDLEWARE] Token exists:', !!token);
   
-  const payload = token ? await verifyTokenEdge(token) : null;
+  const payload = await (token ? verifyTokenEdge(token) : Promise.resolve(null));
   const isAuthenticated = payload !== null;
 
   console.log('[MIDDLEWARE] Token verified:', !!payload);

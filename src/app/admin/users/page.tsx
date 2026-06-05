@@ -2,12 +2,13 @@
  * Admin Page: User Management
  * Yêu cầu permission: user:read
  */
-
+export const dynamic = 'force-dynamic';
 import { requirePermission } from '@/lib/auth';
 import { PERMISSIONS } from '@/types/auth';
 import { prisma } from '@/lib/prisma';
 import { UsersPageClient } from './UsersPageClient';
 import { redirect } from 'next/navigation';
+
 
 export default async function UsersPage() {
   try {
