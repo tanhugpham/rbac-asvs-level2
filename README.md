@@ -139,4 +139,6 @@ MIT - Dự án học tập cho môn Bảo mật Web và Ứng dụng.
 
 ---
 
-**OWASP ASVS Level 2 Compliant** ✅ | Built with ❤️ using Next.js, Prisma, and Tailwind CSS
+**OWASP ASVS Level 2 Compliant** ✅ | Built with using Next.js, Prisma, and Tailwind CSS
+Copyright (c) 2026 Phạm Tấn Hưng
+
