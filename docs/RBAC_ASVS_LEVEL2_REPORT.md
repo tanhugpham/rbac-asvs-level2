@@ -520,7 +520,7 @@ npm run dev
 
 ---
 
-**Người thực hiện**: [Tên sinh viên]  
-**Lớp**: [Tên lớp]  
+**Người thực hiện**: Phạm Tấn Hưng  
+**Lớp**: 12DHBM01 
 **Môn học**: Bảo mật web và ứng dụng  
-**Ngày hoàn thành**: [Ngày]
+**Ngày hoàn thành**: 05/06/2026
