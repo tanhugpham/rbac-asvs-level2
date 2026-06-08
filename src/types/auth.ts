@@ -203,6 +203,7 @@ export interface AttackSimulationStep {
   timestamp: Date;
   details?: string;
   asvsReference?: string;
+  blockCriteria?: string;
 }
 
 export interface AttackSimulationResult {

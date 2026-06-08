@@ -32,6 +32,7 @@ export default async function CustomerSupportPage() {
 
         {/* Support Options */}
         <div className="space-y-6">
+          {/* Contact Information */}
           <Card>
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
@@ -45,8 +46,18 @@ export default async function CustomerSupportPage() {
                   <div className="flex items-center gap-3">
                     <Mail className="h-5 w-5 text-blue-400" />
                     <div>
-                      <p className="text-sm text-gray-400">Email</p>
+                      <p className="text-sm text-gray-400">Email chính</p>
                       <p className="font-semibold text-white">support@example.com</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="rounded-lg border border-white/10 bg-white/5 p-4">
+                  <div className="flex items-center gap-3">
+                    <Mail className="h-5 w-5 text-purple-400" />
+                    <div>
+                      <p className="text-sm text-gray-400">Email hỗ trợ</p>
+                      <p className="font-semibold text-white">hungcute1293@gmail.com</p>
                     </div>
                   </div>
                 </div>
@@ -70,6 +81,7 @@ export default async function CustomerSupportPage() {
             </CardContent>
           </Card>
 
+          {/* Frequently Asked Questions */}
           <Card>
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
@@ -99,18 +111,36 @@ export default async function CustomerSupportPage() {
                     Vui lòng liên hệ support qua email hoặc phone để được hỗ trợ reset mật khẩu.
                   </p>
                 </div>
+
+                <div className="rounded-lg border border-white/10 bg-white/5 p-4">
+                  <h3 className="font-semibold text-white">Tôi muốn hủy đơn hàng, làm thế nào?</h3>
+                  <p className="mt-2 text-sm text-gray-400">
+                    Vui lòng liên hệ support team qua email để yêu cầu hủy đơn hàng.
+                    Đội ngũ support sẽ xử lý trong vòng 24 giờ.
+                  </p>
+                </div>
+
+                <div className="rounded-lg border border-white/10 bg-white/5 p-4">
+                  <h3 className="font-semibold text-white">Thời gian hỗ trợ?</h3>
+                  <p className="mt-2 text-sm text-gray-400">
+                    Đội ngũ support làm việc từ Thứ 2 đến Thứ 6, 9:00 AM - 6:00 PM (GMT+7).
+                    Các yêu cầu ngoài giờ sẽ được xử lý vào ngày làm việc tiếp theo.
+                  </p>
+                </div>
               </div>
             </CardContent>
           </Card>
 
-          <Card className="border-green-500/30 bg-green-500/5">
+          {/* Need more help */}
+          <Card className="border-blue-500/30 bg-blue-500/5">
             <CardContent className="p-6">
               <div className="flex items-start gap-3">
-                <MessageCircle className="h-6 w-6 flex-shrink-0 text-green-400" />
+                <MessageCircle className="h-6 w-6 flex-shrink-0 text-blue-400" />
                 <div>
-                  <h3 className="font-semibold text-green-400">Need More Help?</h3>
+                  <h3 className="font-semibold text-blue-400">Need More Help?</h3>
                   <p className="mt-1 text-sm text-gray-300">
-                    Nếu bạn không tìm thấy câu trả lời, vui lòng liên hệ support team.
+                    Nếu bạn không tìm thấy câu trả lời, vui lòng liên hệ support team qua email
+                    <strong className="text-white"> hungcute1293@gmail.com</strong>.
                     Chúng tôi sẽ phản hồi trong vòng 24 giờ.
                   </p>
                 </div>

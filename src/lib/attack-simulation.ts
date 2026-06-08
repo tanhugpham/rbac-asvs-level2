@@ -73,7 +73,7 @@ export async function simulateAttack(
           status: 'blocked',
           message: 'Permission denied: CUSTOMER does not have audit:read',
           details: 'User permissions: [product:read, order:read_own]',
-          asvsReference: 'OWASP ASVS V4.1.1, V4.1.3',
+          asvsReference: 'V4.1.1: Server-side Access Control (cannot bypass from client)\nV4.1.3: Least Privilege (CUSTOMER has only 2 of 17 permissions)',
         },
         {
           step: 6,
@@ -138,7 +138,7 @@ export async function simulateAttack(
           status: 'blocked',
           message: 'Permission denied: STAFF does not have role:update',
           details: 'STAFF permissions: [product:*, order:*, user:read]',
-          asvsReference: 'OWASP ASVS V4.1.1, V4.1.3',
+          asvsReference: 'V4.1.1: Server-side Access Control (authorization in API route, not UI)\nV4.1.3: Least Privilege (STAFF cannot modify roles - only ADMIN has role:update)',
         },
         {
           step: 5,
@@ -202,7 +202,7 @@ export async function simulateAttack(
           status: 'blocked',
           message: 'Ownership validation failed',
           details: 'Order owner: other-user-id, Current user: current-user-id',
-          asvsReference: 'OWASP ASVS V4.1.1, V4.2.1',
+          asvsReference: 'V4.1.1: Server-side Ownership Check (not trusting client claims)\nV4.2.1: Resource-level Access Control (order.userId must match currentUser.id)',
         },
         {
           step: 5,
@@ -259,7 +259,7 @@ export async function simulateAttack(
           status: 'blocked',
           message: 'JWT signature verification failed',
           details: 'Token signed with wrong secret or algorithm',
-          asvsReference: 'OWASP ASVS V3.5.2, V8.3.1',
+          asvsReference: 'V3.5.2: JWT Signature Verification (token signed by unknown secret rejected)\nV8.3.1: Server-side Session Validation (cannot trust client-provided claims)',
         },
         {
           step: 4,
@@ -323,7 +323,7 @@ export async function simulateAttack(
           status: 'blocked',
           message: 'Required permission not found',
           details: 'User does not have audit:read permission',
-          asvsReference: 'OWASP ASVS V4.1.1, V4.1.3',
+          asvsReference: 'V4.1.1: Server-side Permission Check (each route validates permissions independently)\nV4.1.3: Least Privilege (authenticated ≠ authorized - staff lacks audit:read)',
         },
         {
           step: 5,
@@ -377,7 +377,7 @@ export async function simulateAttack(
           status: 'blocked',
           message: 'Token expired',
           details: 'Token exp: 2 hours ago, Current time: now',
-          asvsReference: 'OWASP ASVS V3.5.3, V8.3.2',
+          asvsReference: 'V3.5.3: Token Expiration (exp claim < current time → token rejected)\nV8.3.2: Session Timeout (automatic logout after 7 days)',
         },
         {
           step: 4,

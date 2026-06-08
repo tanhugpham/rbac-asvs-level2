@@ -197,9 +197,9 @@ export function AttackSimulationTerminal({
 
                       {/* ASVS Reference */}
                       {step.asvsReference && (
-                        <div className="mt-2 flex items-center gap-2 text-xs">
-                          <Shield className="h-3 w-3 text-blue-400" />
-                          <span className="text-blue-400">{step.asvsReference}</span>
+                        <div className="mt-2 flex items-start gap-2 text-xs">
+                          <Shield className="mt-0.5 h-3 w-3 flex-shrink-0 text-blue-400" />
+                          <span className="text-blue-400 leading-relaxed whitespace-pre-line">{step.asvsReference}</span>
                         </div>
                       )}
 

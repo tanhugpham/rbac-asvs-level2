@@ -18,7 +18,9 @@ export type AuditAction =
   | 'USER_CREATED'
   | 'USER_UPDATED'
   | 'USER_DELETED'
-  | 'RESOURCE_ACCESS';
+  | 'RESOURCE_ACCESS'
+  // AI Chat Security
+  
 
 export type AuditStatus = 'SUCCESS' | 'DENIED' | 'ERROR';
 

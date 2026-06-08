@@ -22,9 +22,10 @@ model User {
   updatedAt DateTime @updatedAt
 
   // Relations
-  userRoles UserRole[]
-  orders    Order[]
-  auditLogs AuditLog[]
+  userRoles     UserRole[]
+  orders        Order[]
+  auditLogs     AuditLog[]
+  supportTickets SupportTicket[]
 
   @@index([email])
   @@map("users")
@@ -99,7 +100,7 @@ model RolePermission {
 model AuditLog {
   id          String   @id @default(cuid())
   userId      String?
-  action      String // Hành động: LOGIN, ACCESS_DENIED, PERMISSION_CHECK, etc.
+  action      String // Hành động: LOGIN, ACCESS_DENIED, PERMISSION_CHECK, AI_CHAT_REQUEST, AI_CHAT_DENIED, etc.
   resource    String? // Route/API/Action bị truy cập
   permission  String? // Permission yêu cầu
   status      String // SUCCESS, DENIED, ERROR
@@ -171,4 +172,24 @@ model OrderItem {
   @@index([orderId])
   @@index([productId])
   @@map("order_items")
+}
+
+// Bảng SupportTicket - Yêu cầu hỗ trợ từ người dùng
+model SupportTicket {
+  id        String   @id @default(cuid())
+  userId    String
+  subject   String
+  message   String
+  category  String   @default("OTHER") // QUESTION, COMPLAINT, REQUEST, OTHER
+  status    String   @default("OPEN") // OPEN, IN_PROGRESS, RESOLVED, CLOSED
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Relations
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([status])
+  @@index([createdAt])
+  @@map("support_tickets")
 }
